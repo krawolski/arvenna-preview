@@ -963,6 +963,9 @@ h2.section-title { font-size: var(--step-h2); margin-bottom: 1.2rem; }
 }
 
 .avatar svg { width: 78px; height: 78px; }
+
+/* An avatar slot can hold a real portrait instead of the drawn mark. */
+.avatar > .ph { width: 100%; height: 100%; border-radius: 50%; background-size: cover; }
 .member h3 { font-size: var(--step-h3); margin-bottom: 0.2rem; }
 .member-role { font-size: var(--step-micro); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
 .member p { font-size: var(--step-small); color: var(--muted); }
