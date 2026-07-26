@@ -354,10 +354,40 @@ h2.section-title { font-size: var(--step-h2); margin-bottom: 1.2rem; }
 
 .header-actions { display: flex; align-items: center; gap: 0.85rem; }
 
-.lang-switch { display: flex; align-items: center; gap: 0.3rem; font-size: var(--step-micro); font-weight: 600; }
-.lang-switch a { text-decoration: none; color: var(--muted); transition: color 0.2s var(--ease); }
+/* Four language codes plus separators crowd the header on a phone, so the
+   switch moves into the mobile menu below 620px. */
+.lang-switch { display: none; align-items: center; gap: 0.28rem; font-size: var(--step-micro); font-weight: 600; }
+.lang-switch a { text-decoration: none; color: var(--muted); padding: 0.15rem 0.1rem; transition: color 0.2s var(--ease); }
 .lang-switch a:hover, .lang-switch [aria-current="true"] { color: var(--ink); }
-.lang-switch .sep { color: var(--muted); }
+.lang-switch [aria-current="true"] { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: var(--accent); }
+.lang-switch .sep { color: var(--line-strong); }
+
+@media (min-width: 620px) { .lang-switch { display: flex; } }
+
+/* Language row inside the mobile menu */
+.mobile-lang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.mobile-lang a {
+  display: inline-flex;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: var(--step-small);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.mobile-lang a[aria-current="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+@media (min-width: 620px) { .mobile-lang { display: none; } }
 
 /* Theme toggle, two colour dots */
 .theme-toggle {
@@ -543,7 +573,11 @@ h2.section-title { font-size: var(--step-h2); margin-bottom: 1.2rem; }
 .grid--4 { grid-template-columns: 1fr; }
 
 .grid > *, .plans > *, .team-grid > *, .footer-grid > *, .field-row > *,
-.contact-grid > *, .split > * { min-width: 0; }
+.contact-grid > *, .split > *,
+/* Grid children default to min-width:auto. A single long unbreakable word
+   (German compounds, French words joined by U+2019) can then blow the track
+   wider than its share and push the page sideways. */
+.trust ul > *, .demo-thumbs > *, .steps > * { min-width: 0; }
 
 .card {
   position: relative;
@@ -974,6 +1008,43 @@ h2.section-title { font-size: var(--step-h2); margin-bottom: 1.2rem; }
 
 .contact-grid { display: grid; gap: clamp(2.5rem, 2rem + 3vw, 4rem); }
 .contact-aside p { color: var(--muted); margin-bottom: 2rem; text-wrap: pretty; }
+
+/* Named contact person. A real face next to the form is the strongest trust
+   signal on the page, so it sits above the fold of the contact block. */
+.contact-person {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.1rem;
+  align-items: center;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.contact-person .ph {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  flex: none;
+  border: 1px solid var(--line);
+}
+
+.contact-person p { margin: 0; }
+.contact-person .cp-name { font-size: var(--step-h3); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; }
+
+.contact-person .cp-role {
+  font-size: var(--step-micro);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0.2rem 0 0.45rem;
+}
+
+.contact-person .cp-line { font-size: var(--step-small); color: var(--muted); line-height: 1.45; }
 .contact-points { display: grid; gap: 1.4rem; }
 .contact-point { display: grid; grid-template-columns: 22px 1fr; gap: 0.9rem; }
 .contact-point svg { width: 22px; height: 22px; color: var(--accent); margin-top: 3px; }

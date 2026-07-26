@@ -152,39 +152,57 @@
 
   /* --- Branch selector and live demo preview ---------------------------- */
 
-  var IS_EN = document.documentElement.lang.slice(0, 2) === 'en';
+  // Four Swiss language versions. Anything missing falls back to German.
+  var LANG = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase();
+  if (['de', 'fr', 'it', 'en'].indexOf(LANG) === -1) LANG = 'de';
+
+  function tr(map) {
+    return map[LANG] !== undefined ? map[LANG] : map.de;
+  }
 
   var DEMOS = {
     coiffeur: {
-      branch: IS_EN ? 'Hair salon' : 'Coiffeur',
+      branch: tr({ de: 'Coiffeur', fr: 'Coiffure', it: 'Parrucchiere', en: 'Hair salon' }),
       name: 'Salon Aurea',
-      desc: IS_EN
-        ? 'Price list, appointment requests and a gallery. Calm and high end, the way the salon wants to feel.'
-        : 'Preisliste, Terminanfrage und Galerie. Ruhig und hochwertig, so wie der Salon wirken soll.',
+      desc: tr({
+        de: 'Preisliste, Terminanfrage und Galerie. Ruhig und hochwertig, so wie der Salon wirken soll.',
+        fr: 'Tarifs, demande de rendez-vous et galerie. Calme et haut de gamme, à l’image du salon.',
+        it: 'Listino, richiesta di appuntamento e galleria. Calmo e curato, come vuole apparire il salone.',
+        en: 'Price list, appointment requests and a gallery. Calm and high end, the way the salon wants to feel.'
+      }),
       url: 'demos/coiffeur/index.html'
     },
     gastro: {
-      branch: IS_EN ? 'Restaurant' : 'Gastronomie',
+      branch: tr({ de: 'Gastronomie', fr: 'Restauration', it: 'Ristorazione', en: 'Restaurant' }),
       name: 'Restaurant Sonnenhof',
-      desc: IS_EN
-        ? 'Menu, weekly lunch and table reservations. Warm and inviting, the guest pictures the room.'
-        : 'Speisekarte, Mittagsmenü und Reservation. Warm und einladend, der Gast sieht den Raum vor sich.',
+      desc: tr({
+        de: 'Speisekarte, Mittagsmenü und Reservation. Warm und einladend, der Gast sieht den Raum vor sich.',
+        fr: 'Carte, menu de midi et réservation. Chaleureux et accueillant, le client voit déjà la salle.',
+        it: 'Menu, piatto del giorno e prenotazione. Caldo e accogliente, l’ospite vede già la sala.',
+        en: 'Menu, weekly lunch and table reservations. Warm and inviting, the guest pictures the room.'
+      }),
       url: 'demos/gastro/index.html'
     },
     baufirma: {
-      branch: IS_EN ? 'Construction' : 'Bau und Handwerk',
+      branch: tr({ de: 'Bau und Handwerk', fr: 'Construction et artisanat', it: 'Edilizia e artigianato', en: 'Construction' }),
       name: 'Steinmann Bau AG',
-      desc: IS_EN
-        ? 'Projects, a quote form and a large click to call button. Grounded and direct.'
-        : 'Referenzen, Offertformular und ein grosser Anruf-Knopf. Bodenständig und direkt.',
+      desc: tr({
+        de: 'Referenzen, Offertformular und ein grosser Anruf-Knopf. Bodenständig und direkt.',
+        fr: 'Réalisations, formulaire de devis et un grand bouton d’appel. Solide et direct.',
+        it: 'Referenze, modulo per il preventivo e un grande pulsante di chiamata. Concreto e diretto.',
+        en: 'Projects, a quote form and a large click to call button. Grounded and direct.'
+      }),
       url: 'demos/baufirma/index.html'
     },
     robotik: {
-      branch: IS_EN ? 'Industry and B2B' : 'Industrie und B2B',
+      branch: tr({ de: 'Industrie und B2B', fr: 'Industrie et B2B', it: 'Industria e B2B', en: 'Industry and B2B' }),
       name: 'Voltra Robotics AG',
-      desc: IS_EN
-        ? 'Services that need explaining, made understandable, with a technical enquiry form.'
-        : 'Erklärungsbedürftige Leistungen verständlich gemacht, mit technischer Anfrage.',
+      desc: tr({
+        de: 'Erklärungsbedürftige Leistungen verständlich gemacht, mit technischer Anfrage.',
+        fr: 'Des prestations techniques rendues compréhensibles, avec formulaire de demande.',
+        it: 'Prestazioni tecniche rese comprensibili, con modulo di richiesta.',
+        en: 'Services that need explaining, made understandable, with a technical enquiry form.'
+      }),
       url: 'demos/robotik/index.html'
     }
   };
@@ -230,8 +248,12 @@
       descLabel.textContent = demo.desc;
       urlLabel.textContent = 'arvenna.ch/' + demo.url.replace('/index.html', '');
       link.href = base + demo.url;
-      link.setAttribute('aria-label', (IS_EN ? 'Open the ' : 'Demoprojekt ') + demo.name +
-        (IS_EN ? ' demo at full size' : ' in voller Grösse öffnen'));
+      link.setAttribute('aria-label', tr({
+        de: 'Demoprojekt ' + demo.name + ' in voller Grösse öffnen',
+        fr: 'Ouvrir le projet de démonstration ' + demo.name + ' en taille réelle',
+        it: 'Apri il progetto dimostrativo ' + demo.name + ' a grandezza intera',
+        en: 'Open the ' + demo.name + ' demo at full size'
+      }));
 
       if (!loadNow) return;
       frame.classList.remove('is-ready');
@@ -289,7 +311,10 @@
     if (!trigger || !select) return;
 
     trigger.addEventListener('click', function () {
-      select.value = IS_EN ? 'Other industry' : 'Andere Branche';
+      select.value = tr({
+        de: 'Andere Branche', fr: 'Autre secteur',
+        it: 'Altro settore', en: 'Other industry'
+      });
       // Give focus after the smooth scroll has had a moment to run.
       setTimeout(function () {
         var message = document.getElementById('nachricht');
@@ -329,23 +354,33 @@
     if (!form) return;
 
     var status = form.querySelector('.form-status');
-    var copy = {
-      de: {
-        required: 'Bitte füllen Sie dieses Feld aus.',
-        email: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
-        sending: 'Wird gesendet',
-        ok: 'Vielen Dank, Ihre Anfrage ist angekommen. Wir melden uns innerhalb eines Arbeitstages.',
-        err: 'Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an info@arvenna.ch.'
-      },
-      en: {
-        required: 'Please fill in this field.',
-        email: 'Please enter a valid email address.',
-        sending: 'Sending',
-        ok: 'Thank you, we have received your enquiry and will reply within one working day.',
-        err: 'Something went wrong. Please email us directly at info@arvenna.ch.'
-      }
+    var t = {
+      required: tr({
+        de: 'Bitte füllen Sie dieses Feld aus.',
+        fr: 'Merci de remplir ce champ.',
+        it: 'Compili questo campo, per favore.',
+        en: 'Please fill in this field.'
+      }),
+      email: tr({
+        de: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+        fr: 'Merci d’indiquer une adresse e-mail valable.',
+        it: 'Inserisca un indirizzo e-mail valido.',
+        en: 'Please enter a valid email address.'
+      }),
+      sending: tr({ de: 'Wird gesendet', fr: 'Envoi en cours', it: 'Invio in corso', en: 'Sending' }),
+      ok: tr({
+        de: 'Vielen Dank, Ihre Anfrage ist angekommen. Wir melden uns innerhalb eines Arbeitstages.',
+        fr: 'Merci, votre demande nous est bien parvenue. Nous revenons vers vous sous un jour ouvrable.',
+        it: 'Grazie, la sua richiesta è arrivata. Le rispondiamo entro un giorno lavorativo.',
+        en: 'Thank you, we have received your enquiry and will reply within one working day.'
+      }),
+      err: tr({
+        de: 'Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an info@arvenna.ch.',
+        fr: 'Cela n’a malheureusement pas fonctionné. Écrivez-nous directement à info@arvenna.ch.',
+        it: 'Purtroppo non ha funzionato. Ci scriva direttamente a info@arvenna.ch.',
+        en: 'Something went wrong. Please email us directly at info@arvenna.ch.'
+      })
     };
-    var t = copy[document.documentElement.lang.slice(0, 2) === 'en' ? 'en' : 'de'];
 
     function setError(field, message) {
       var box = form.querySelector('#' + field.id + '-error');

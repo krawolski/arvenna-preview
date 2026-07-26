@@ -22,6 +22,21 @@ function kopfzeilenSicher(string $wert): string
     return trim(str_replace(["\r", "\n", "%0a", "%0d"], '', $wert));
 }
 
+/**
+ * Aus welcher Sprachfassung kam die Anfrage. Steht in der Mail, damit die
+ * Antwort in derselben Sprache verfasst wird.
+ */
+function spracheAusReferer(): string
+{
+    $referer = $_SERVER['HTTP_REFERER'] ?? '';
+    foreach (['fr', 'it', 'en'] as $code) {
+        if (str_contains($referer, '/' . $code . '/')) {
+            return strtoupper($code);
+        }
+    }
+    return 'DE';
+}
+
 function feld(string $name): string
 {
     $wert = $_POST[$name] ?? '';
@@ -116,7 +131,7 @@ $koerper = implode("\n", [
     'Firma:     ' . ($firma !== '' ? $firma : '-'),
     'Telefon:   ' . ($telefon !== '' ? $telefon : '-'),
     'Branche:   ' . $branche,
-    'Sprache:   ' . (str_contains($_SERVER['HTTP_REFERER'] ?? '', '/en/') ? 'EN' : 'DE'),
+    'Sprache:   ' . spracheAusReferer(),
     str_repeat('-', 56),
     '',
     $nachricht,
