@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant Sonnenhof – Regionale Küche in Meggen bei Luzern</title>
+<meta name="description" content="Gasthaus Sonnenhof in Meggen: saisonale Küche aus der Region, Mittagsmenü von Montag bis Freitag und Tischreservation online. Fiktives Demoprojekt der Webagentur Arvenna.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://arvenna.ch/demos/gastro/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_CH">
+<meta property="og:site_name" content="Restaurant Sonnenhof">
+<meta property="og:title" content="Restaurant Sonnenhof – Regionale Küche in Meggen bei Luzern">
+<meta property="og:description" content="Saisonale Küche aus der Region, Mittagsmenü von Montag bis Freitag und Tischreservation online.">
+<meta property="og:url" content="https://arvenna.ch/demos/gastro/">
+<meta name="theme-color" content="#1E2E22">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%231E2E22'/%3E%3Ccircle cx='32' cy='25' r='9.5' fill='%23E08A47'/%3E%3Cpath d='M7 47 L23 31 L34 41 L45 32 L57 47 Z' fill='%23A8BE8E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap">
+<link rel="preload" as="image" href="../../assets/img/gastro/stube-hero-1600.webp"
+      imagesrcset="../../assets/img/gastro/stube-hero-800.webp 800w, ../../assets/img/gastro/stube-hero-1600.webp 1600w"
+      imagesizes="100vw">
+<!-- Setzt die JS-Klasse vor dem ersten Paint, damit Reveals und Blur-up nicht flackern. -->
+<script>document.documentElement.className+=" js";</script>
+<style>
+/* =====================================================================
+   Restaurant Sonnenhof · Demo
+   Palette: Tannengrün / warmes Creme / Kupfer / Holzton
+   ===================================================================== */
+:root{
+  --forest-900:#16231A;
+  --forest-800:#1E2E22;
+  --forest-700:#2B4030;
+  --olive-600:#4A5C3B;
+  --olive-300:#A8BE8E;
+  --cream:#F7F2E6;
+  --cream-2:#EFE7D5;
+  --cream-3:#E4D9C1;
+  --copper:#B25A20;        /* Flächen mit weisser Schrift (Kontrast 4.8) */
+  --copper-ink:#8F4416;    /* Kupfer als Textfarbe auf Creme (Kontrast 5.0) */
+  --copper-light:#E08A47;  /* Kupfer auf dunklem Grund */
+  --copper-pale:#F7DCC2;   /* Kupferton fuer Text ueber Fotos (>= 4.5:1 nach Scrim) */
+  --on-photo:#EAEEE1;      /* Fliesstext ueber Fotos (>= 4.5:1 nach Scrim) */
+  --wood:#3A2E24;
+  --ink:#24211B;
+  --muted:#4E4739;
+  --muted-dark:#C3C9B8;
+  --line:rgba(36,33,27,.14);
+  --line-dark:rgba(247,242,230,.16);
+
+  --ff-display:"Lora",Georgia,"Times New Roman",serif;
+  --ff-body:"Karla","Helvetica Neue",Arial,sans-serif;
+
+  --wrap:1180px;
+  --pad:clamp(1.15rem,4vw,2.5rem);
+  --sect-y:clamp(3.5rem,8vw,6.5rem);
+  --radius:14px;
+  --ribbon-h:44px;
+  --shadow-s:0 2px 10px rgba(22,35,26,.07);
+  --shadow-m:0 14px 40px rgba(22,35,26,.13);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--ribbon-h);
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--ff-body);
+  font-size:clamp(1rem,.97rem + .18vw,1.075rem);
+  line-height:1.65;
+  overflow-x:clip; /* Sicherheitsnetz gegen horizontales Scrollen */
+}
+img,svg{max-width:100%}
+svg{display:block}
+h1,h2,h3,h4{font-family:var(--ff-display);font-weight:600;line-height:1.15;margin:0;letter-spacing:-.005em}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:var(--copper-ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--copper)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--copper);outline-offset:3px;border-radius:4px}
+::selection{background:var(--copper-light);color:var(--forest-900)}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.section{padding-block:var(--sect-y)}
+.section[id]{scroll-margin-top:calc(var(--ribbon-h) + 76px)}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--forest-800);color:var(--cream);padding:.75rem 1.25rem;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+
+/* --- Typo-Bausteine ------------------------------------------------- */
+.eyebrow{
+  font-family:var(--ff-body);font-size:.775rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--copper-ink);
+  display:flex;align-items:center;gap:.65rem;margin-bottom:1rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--copper);flex:none}
+.eyebrow--on-dark{color:var(--copper-light)}
+.eyebrow--on-dark::before{background:var(--copper-light)}
+.h-sect{font-size:clamp(1.85rem,1.2rem + 2.6vw,3rem)}
+.lead{font-size:clamp(1.06rem,1rem + .35vw,1.2rem);color:var(--muted);max-width:60ch}
+.lead--on-dark{color:var(--muted-dark)}
+.sect-head{max-width:62ch;margin-bottom:clamp(2rem,4vw,3rem)}
+.rule + .lead,.rule + p{margin-top:1.4rem}
+
+/* --- Buttons -------------------------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.85rem 1.6rem;border-radius:999px;border:1.5px solid transparent;
+  font-weight:700;font-size:.95rem;letter-spacing:.01em;text-decoration:none;
+  cursor:pointer;transition:transform .25s var(--ease),background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);
+}
+.btn--primary{background:var(--copper);color:#fff}
+.btn--primary:hover{background:#9C4C18;color:#fff;transform:translateY(-2px)}
+.btn--ghost{border-color:currentColor;color:var(--forest-800);background:transparent}
+.btn--ghost:hover{background:var(--forest-800);color:var(--cream);border-color:var(--forest-800);transform:translateY(-2px)}
+.btn--ghost-light{border-color:var(--muted-dark);color:var(--cream);background:transparent}
+.btn--ghost-light:hover{background:var(--cream);color:var(--forest-900);border-color:var(--cream);transform:translateY(-2px)}
+.btn--wide{width:100%}
+
+/* --- Arvenna-Ribbon ------------------------------------------------- */
+.arv-ribbon{
+  position:fixed;inset:0 0 auto 0;z-index:120;
+  display:flex;align-items:center;gap:.75rem;
+  padding:.5rem clamp(.9rem,3vw,1.5rem);
+  background:var(--forest-900);color:#DCE3D4;
+  border-bottom:1px solid rgba(224,138,71,.3);
+  font-size:.78rem;line-height:1.35;
+}
+.arv-ribbon p{margin:0;flex:1 1 auto}
+.arv-ribbon a{color:var(--copper-light);text-decoration:underline;white-space:nowrap}
+.arv-ribbon a:hover{color:#fff}
+.arv-ribbon button{
+  flex:none;width:28px;height:28px;border:0;border-radius:50%;
+  background:transparent;color:#DCE3D4;font-size:1.15rem;line-height:1;cursor:pointer;
+  transition:background-color .2s var(--ease),color .2s var(--ease);
+}
+.arv-ribbon button:hover{background:rgba(247,242,230,.14);color:#fff}
+body.ribbon-hidden{--ribbon-h:0px}
+body.ribbon-hidden .arv-ribbon{display:none}
+
+/* --- Header --------------------------------------------------------- */
+.site-header{
+  position:sticky;top:var(--ribbon-h);z-index:100;
+  background:rgba(247,242,230,.94);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;gap:1rem;min-height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--forest-800);margin-right:auto}
+.brand-mark{flex:none;width:40px;height:40px}
+.brand-name{font-family:var(--ff-display);font-size:1.3rem;font-weight:700;letter-spacing:.01em;line-height:1.05;display:block}
+.brand-sub{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.nav-desktop{display:none}
+.nav-desktop ul{display:flex;align-items:center;gap:clamp(.9rem,1.8vw,1.9rem)}
+.nav-desktop a{
+  color:var(--forest-800);text-decoration:none;font-weight:500;font-size:.94rem;
+  padding:.4rem 0;position:relative;
+}
+.nav-desktop a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:.1rem;height:1.5px;
+  background:var(--copper);transition:right .3s var(--ease);
+}
+.nav-desktop a:hover::after,.nav-desktop a:focus-visible::after{right:0}
+.header-cta{display:none}
+.nav-toggle{
+  margin-left:auto;display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;border:1.5px solid var(--line);border-radius:999px;
+  padding:.5rem .9rem;font-size:.85rem;font-weight:700;cursor:pointer;color:var(--forest-800);
+}
+.nav-toggle:hover{border-color:var(--copper);color:var(--copper-ink)}
+.nav-toggle .bars{display:block;width:18px;height:12px;position:relative}
+.nav-toggle .bars span{position:absolute;left:0;right:0;height:1.8px;background:currentColor;border-radius:2px;transition:transform .3s var(--ease),opacity .2s var(--ease)}
+.nav-toggle .bars span:nth-child(1){top:0}
+.nav-toggle .bars span:nth-child(2){top:5px}
+.nav-toggle .bars span:nth-child(3){top:10px}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.nav-mobile{border-top:1px solid var(--line);background:var(--cream)}
+.nav-mobile[hidden]{display:none}
+.nav-mobile ul{display:flex;flex-direction:column;padding-block:.75rem}
+.nav-mobile a{
+  display:block;padding:.8rem .2rem;color:var(--forest-800);text-decoration:none;
+  font-weight:500;border-bottom:1px solid var(--line);
+}
+.nav-mobile li:last-child a{border-bottom:0}
+.nav-mobile .btn{margin:1rem 0 1.4rem}
+/* --- Fotorahmen: Blur-up, Kupferwäsche, Zoom ------------------------- */
+/* Reihenfolge im Rahmen: ::before = unscharfer Platzhalter, .ph-inner = Foto,
+   ::after = Kupferwäsche. Ohne JS bleibt das Foto sichtbar (opacity 1). */
+.ph{position:relative;overflow:hidden;display:block;isolation:isolate;background:var(--forest-800)}
+.ph::before{
+  content:"";position:absolute;inset:-7%;z-index:0;
+  background-image:var(--lqip);background-size:cover;background-position:center;
+  filter:blur(22px);transform:scale(1.05);
+  transition:opacity .85s var(--ease);
+}
+.ph.is-loaded::before{opacity:0}
+.ph::after{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(152deg,rgba(178,90,32,.34),rgba(43,64,48,.30));
+  mix-blend-mode:soft-light;
+}
+.ph-inner{position:absolute;inset:0;z-index:1;display:block}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.js .ph img{opacity:0;transition:opacity .85s var(--ease)}
+.js .ph.is-loaded img{opacity:1}
+.ph--4x3{aspect-ratio:4/3}
+.ph--3x2{aspect-ratio:3/2}
+.ph--4x5{aspect-ratio:4/5}
+.ph--3x4{aspect-ratio:3/4}
+.ph--2x3{aspect-ratio:2/3}
+.frame{border-radius:var(--radius);box-shadow:var(--shadow-m)}
+.zoom img{transition:transform 1s var(--ease),opacity .85s var(--ease)}
+.zoom:hover img{transform:scale(1.07)}
+.media-cap{margin-top:.8rem;font-size:.88rem;color:var(--muted)}
+.media-cap--on-dark{color:var(--muted-dark)}
+
+/* --- Hero ----------------------------------------------------------- */
+.hero{position:relative;overflow:hidden;background:var(--forest-900);color:var(--cream);isolation:isolate}
+.hero-media{position:absolute;inset:-9% 0;z-index:0;will-change:transform}
+.hero-media img{object-position:center 46%}
+/* Ken Burns läuft auf der inneren Ebene, damit die Parallaxe den Rahmen bewegen kann. */
+@keyframes kenBurns{
+  from{transform:scale(1.05) translate3d(0,0,0)}
+  to{transform:scale(1.16) translate3d(-1.8%,-2.2%,0)}
+}
+.hero-media .ph-inner{animation:kenBurns 38s var(--ease) infinite alternate}
+/* Scrim: Grundschleier + bodenlastiger Verlauf. Am Bild gemessen liegt der
+   schlechteste Textwert damit bei 5.3:1 (Desktop) bzw. 6.0:1 (Mobil). */
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(52% 42% at 86% 10%,rgba(224,138,71,.09),transparent 64%),
+    linear-gradient(to top,rgba(22,35,26,.88) 0%,rgba(22,35,26,.58) 46%,rgba(22,35,26,.36) 100%),
+    linear-gradient(rgba(22,35,26,.36),rgba(22,35,26,.36));
+}
+.hero-inner{
+  position:relative;z-index:2;display:grid;align-content:end;
+  min-height:clamp(31rem,82vh,46rem);
+  padding-block:clamp(4.5rem,13vw,8rem) clamp(3rem,7vw,4.75rem);
+}
+.hero-copy{max-width:46rem}
+.hero .eyebrow{color:var(--copper-pale)}
+.hero .eyebrow::before{background:var(--copper-pale)}
+.hero h1{font-size:clamp(2.3rem,1.4rem + 3.6vw,4rem);line-height:1.06;font-weight:600}
+.hero h1 em{font-style:italic;color:var(--copper-pale)}
+.hero .lead{margin-top:1.4rem;color:var(--on-photo)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:2.4rem;
+  padding-top:1.6rem;border-top:1px solid var(--line-dark);
+  font-size:.9rem;color:var(--on-photo);
+}
+.hero-facts li{display:flex;align-items:center;gap:.55rem}
+.hero-facts svg{flex:none;width:17px;height:17px;color:var(--copper-pale)}
+.hero-scroll{
+  position:absolute;left:50%;bottom:1rem;z-index:2;transform:translateX(-50%);
+  width:1px;height:clamp(28px,5vh,46px);background:linear-gradient(to bottom,transparent,var(--copper-pale));
+  opacity:.75;
+}
+@keyframes scrollHint{0%,100%{transform:translateX(-50%) scaleY(.45);opacity:.35}50%{transform:translateX(-50%) scaleY(1);opacity:.8}}
+.hero-scroll{transform-origin:50% 100%;animation:scrollHint 3.4s ease-in-out infinite}
+/* Auf kleinen Schirmen füllt der Text fast die ganze Höhe: Scrim dort flächiger. */
+@media (max-width:767px){
+  .hero-scrim{
+    background:
+      linear-gradient(to top,rgba(22,35,26,.90) 0%,rgba(22,35,26,.64) 62%,rgba(22,35,26,.42) 100%),
+      linear-gradient(rgba(22,35,26,.34),rgba(22,35,26,.34));
+  }
+  .hero-scroll{display:none}
+}
+
+/* --- Speisekarte ---------------------------------------------------- */
+.menu-layout{display:grid;gap:clamp(2rem,4.5vw,3.25rem)}
+.menu-aside{display:grid;gap:1.35rem;align-content:start;align-self:start;min-width:0}
+.menu-figure{margin:0;min-width:0}
+.tip-card{
+  border:1px solid var(--line);border-left:3px solid var(--copper);
+  background:var(--cream-2);border-radius:0 var(--radius) var(--radius) 0;
+  padding:1.15rem 1.35rem;
+}
+.tip-card h3{font-size:1.06rem;margin-bottom:.3rem}
+.tip-card p{font-size:.93rem;color:var(--muted)}
+.tip-card .tip-price{display:block;margin-top:.6rem;font-family:var(--ff-display);font-weight:600;color:var(--copper-ink)}
+.menu-legend{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin-bottom:1.75rem}
+.tag{
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.24rem .6rem .24rem .45rem;border-radius:999px;white-space:nowrap;
+}
+.tag svg{width:14px;height:14px;flex:none}
+.tag--veg{background:rgba(74,92,59,.13);color:#3B4A2F}
+.tag--season{background:rgba(178,90,32,.13);color:var(--copper-ink)}
+.tablist{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.tablist button{
+  background:transparent;border:1.5px solid var(--line);border-radius:999px;
+  padding:.6rem 1.25rem;font-family:var(--ff-display);font-size:1.02rem;font-weight:600;
+  cursor:pointer;color:var(--muted);transition:all .25s var(--ease);
+}
+.tablist button:hover{border-color:var(--copper);color:var(--copper-ink)}
+.tablist button[aria-selected="true"]{background:var(--forest-800);border-color:var(--forest-800);color:var(--cream)}
+.tabpanel[hidden]{display:none}
+/* Tabwechsel als Überblendung statt hartem Umschalten */
+.tabpanel{transition:opacity .22s var(--ease)}
+.tabpanel.is-leaving{opacity:0}
+@keyframes panelIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.js .tabpanel.is-entering{animation:panelIn .48s var(--ease) both}
+.dish-list{display:grid;gap:.25rem}
+.dish{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem 1.25rem;
+  align-items:baseline;padding:1.15rem 0;border-bottom:1px solid var(--line);
+}
+.dish:last-child{border-bottom:0}
+.dish-name{font-family:var(--ff-display);font-size:1.16rem;font-weight:600;margin:0}
+.dish-price{font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--copper-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dish-desc{grid-column:1/-1;color:var(--muted);font-size:.96rem;max-width:62ch}
+.dish-tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.15rem}
+.menu-note{
+  margin-top:2rem;padding:1.1rem 1.3rem;border-left:3px solid var(--copper);
+  background:var(--cream-2);border-radius:0 var(--radius) var(--radius) 0;
+  font-size:.93rem;color:var(--muted);
+}
+
+/* --- Mittagsmenü ---------------------------------------------------- */
+.lunch{background:var(--forest-800);color:var(--cream)}
+.lunch .h-sect{color:var(--cream)}
+.lunch-head{display:grid;gap:clamp(1.75rem,4vw,3rem);margin-bottom:clamp(2rem,4vw,3rem)}
+.lunch-intro{min-width:0}
+.lunch-media{margin:0;min-width:0}
+.lunch-price{
+  display:inline-flex;flex-direction:column;gap:.2rem;margin-top:1.9rem;
+  border:1px solid var(--line-dark);border-radius:var(--radius);padding:1.1rem 1.4rem;
+}
+.lunch-price strong{font-family:var(--ff-display);font-size:1.55rem;color:var(--copper-light);font-weight:600}
+.lunch-price span{font-size:.88rem;color:var(--muted-dark)}
+.week{display:grid;gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:var(--radius);overflow:hidden}
+.day{background:var(--forest-800);padding:1.35rem clamp(1.1rem,3vw,1.7rem);display:grid;gap:.9rem}
+.day-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .7rem}
+.day-name{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--cream);margin:0}
+.day-date{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-dark)}
+.day-dishes{display:grid;gap:.85rem}
+.day-dish{display:grid;gap:.15rem;padding-left:1.1rem;border-left:2px solid rgba(224,138,71,.45)}
+.day-dish--veg{border-left-color:rgba(168,190,142,.6)}
+.day-dish b{font-weight:700;font-size:.99rem;color:var(--cream)}
+.day-dish span{font-size:.9rem;color:var(--muted-dark)}
+.day-dish em{font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--copper-light);display:block;margin-bottom:.15rem}
+.day-dish--veg em{color:var(--olive-300)}
+.lunch-foot{margin-top:1.6rem;font-size:.9rem;color:var(--muted-dark);max-width:70ch}
+
+/* --- Küche / Über uns ----------------------------------------------- */
+.kitchen-grid{display:grid;gap:clamp(2.2rem,5vw,3.5rem)}
+.kitchen-text p + p{margin-top:1.1rem}
+.principles{display:grid;gap:1rem;margin-top:2rem}
+.principle{display:flex;gap:.95rem;align-items:flex-start}
+.principle-icon{
+  flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--cream-2);color:var(--copper-ink);border:1px solid var(--line);
+}
+.principle-icon svg{width:22px;height:22px}
+.principle h3{font-size:1.05rem;margin-bottom:.2rem}
+.principle p{font-size:.93rem;color:var(--muted)}
+.kitchen-side{display:grid;gap:clamp(1.5rem,3vw,2.25rem);align-content:start;min-width:0}
+/* Die gezeichnete Teller-Illustration aus dem alten Hero lebt hier weiter. */
+.kitchen-art{position:relative;margin:0;width:100%;max-width:460px;justify-self:center}
+.suppliers{background:var(--cream-2);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,3.5vw,2rem)}
+.suppliers h3{font-size:1.2rem;margin-bottom:.4rem}
+.suppliers > p{font-size:.92rem;color:var(--muted);margin-bottom:1.3rem}
+.supplier-list li{display:grid;gap:.15rem;padding:.9rem 0;border-top:1px solid var(--line)}
+.supplier-list li:last-child{padding-bottom:0}
+.supplier-name{font-family:var(--ff-display);font-weight:600;font-size:1.03rem}
+.supplier-what{font-size:.88rem;color:var(--muted)}
+/* --- Galerie -------------------------------------------------------- */
+/* Drei eigenständige Spalten statt eines starren Rasters: Fotos und
+   Zeichnungen behalten ihr Seitenverhältnis, die Spalten sind versetzt. */
+.gallery-grid{display:grid;gap:clamp(1rem,2.4vw,1.5rem)}
+.gal-col{display:contents}
+.tile{
+  margin:0;
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  background:var(--forest-800);box-shadow:var(--shadow-s);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.tile:hover{transform:translateY(-5px);box-shadow:var(--shadow-m)}
+.tile > svg{width:100%;height:auto}
+.tile figcaption{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  padding:3.6rem 1.15rem 1.05rem;
+  /* Der dichte Teil des Verlaufs reicht bis über die Textoberkante hinaus. */
+  background:linear-gradient(to top,rgba(22,35,26,.97) 0%,rgba(22,35,26,.93) 62%,rgba(22,35,26,0) 100%);
+  color:var(--cream);font-family:var(--ff-display);font-size:1.06rem;font-weight:600;
+  transition:padding-bottom .4s var(--ease);
+}
+.tile figcaption small{
+  display:block;font-family:var(--ff-body);font-size:.79rem;font-weight:400;
+  color:var(--on-photo);margin-top:.15rem;
+}
+.tile:hover figcaption{padding-bottom:1.5rem}
+.gallery-hint{margin-top:1.4rem;font-size:.88rem;color:var(--muted)}
+
+/* --- Reservation ---------------------------------------------------- */
+.reserve{background:var(--wood);color:var(--cream);position:relative;overflow:hidden}
+.reserve::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(75% 60% at 85% 0%,rgba(224,138,71,.22),transparent 60%);
+  pointer-events:none;
+}
+.reserve-inner{position:relative;display:grid;gap:clamp(2rem,5vw,3.5rem)}
+.reserve .h-sect{color:var(--cream)}
+.reserve-aside p + p{margin-top:1rem}
+.reserve-contact{margin-top:2rem;display:grid;gap:.9rem;font-size:.95rem}
+.reserve-contact li{display:flex;gap:.75rem;align-items:flex-start}
+.reserve-contact svg{flex:none;width:19px;height:19px;color:var(--copper-light);margin-top:.2rem}
+.reserve-contact a{color:var(--cream);text-decoration:underline;overflow-wrap:anywhere}
+.reserve-contact a:hover{color:var(--copper-light)}
+.form-card{
+  background:var(--cream);color:var(--ink);border-radius:var(--radius);
+  padding:clamp(1.3rem,4vw,2.2rem);box-shadow:var(--shadow-m);
+}
+.form-grid{display:grid;gap:1.05rem}
+.field{display:grid;gap:.35rem;min-width:0}
+.field label{font-size:.85rem;font-weight:700;letter-spacing:.02em}
+.field .req{color:var(--copper-ink)}
+.field input,.field select,.field textarea{
+  font:inherit;font-size:.98rem;width:100%;max-width:100%;
+  padding:.72rem .85rem;border:1.5px solid var(--cream-3);border-radius:9px;
+  background:#fff;color:var(--ink);transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
+}
+.field textarea{min-height:110px;resize:vertical}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#CBBE9E}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(178,90,32,.18);
+}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--copper);outline-offset:1px}
+.field .hint{font-size:.79rem;color:var(--muted)}
+.error-msg{font-size:.82rem;font-weight:700;color:#96301B;display:none}
+.field.has-error input,.field.has-error select,.field.has-error textarea{border-color:#96301B;background:#FDF4F1}
+.field.has-error .error-msg{display:block}
+.form-foot{margin-top:1.5rem;display:grid;gap:.9rem}
+.form-legal{font-size:.79rem;color:var(--muted)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{
+  display:none;gap:.8rem;align-items:flex-start;margin-top:1.25rem;padding:1rem 1.15rem;
+  border-radius:10px;background:rgba(74,92,59,.13);border:1px solid rgba(74,92,59,.35);
+  font-size:.93rem;color:#2F3D26;
+}
+.form-status.is-visible{display:flex}
+.form-status svg{flex:none;width:20px;height:20px;color:#4A5C3B;margin-top:.15rem}
+.form-status strong{display:block;font-size:1rem;margin-bottom:.15rem}
+
+/* --- Öffnungszeiten + Anfahrt ---------------------------------------- */
+.visit-grid{display:grid;gap:clamp(2rem,4.5vw,3rem)}
+.hours-table{width:100%;border-collapse:collapse;font-size:.96rem}
+.hours-table caption{text-align:left;font-size:.85rem;color:var(--muted);padding-bottom:.9rem}
+.hours-table th,.hours-table td{padding:.72rem 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.hours-table th{font-weight:700;width:42%}
+.hours-table td{color:var(--muted);font-variant-numeric:tabular-nums}
+.hours-table tr:last-child th,.hours-table tr:last-child td{border-bottom:0}
+.hours-table .closed th,.hours-table .closed td{color:var(--copper-ink)}
+.hours-note{margin-top:1.2rem;font-size:.9rem;color:var(--muted)}
+.map-frame{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--cream-2);box-shadow:var(--shadow-s)}
+.map-frame svg{width:100%;height:auto}
+.arrival{display:grid;gap:1.15rem;margin-top:1.5rem}
+.arrival li{display:flex;gap:.85rem;align-items:flex-start}
+.arrival svg{flex:none;width:22px;height:22px;color:var(--copper-ink);margin-top:.15rem}
+.arrival b{display:block;font-size:.95rem}
+.arrival span{font-size:.92rem;color:var(--muted)}
+
+/* --- Footer --------------------------------------------------------- */
+.site-footer{background:var(--forest-900);color:var(--muted-dark);padding-block:clamp(2.75rem,6vw,4rem) 2rem;font-size:.92rem}
+.footer-grid{display:grid;gap:2rem;padding-bottom:2.25rem;border-bottom:1px solid var(--line-dark)}
+.footer-brand .brand-name{color:var(--cream)}
+.footer-brand .brand-sub{color:var(--muted-dark)}
+.footer-brand p{margin-top:1rem;max-width:38ch}
+.site-footer h2{font-family:var(--ff-body);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);margin-bottom:.9rem;font-weight:700}
+.footer-list{display:grid;gap:.55rem}
+.site-footer a{color:var(--muted-dark);text-decoration:none;overflow-wrap:anywhere}
+.site-footer a:hover{color:var(--copper-light);text-decoration:underline}
+.footer-bottom{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;padding-top:1.5rem;font-size:.85rem}
+.footer-demo{color:var(--copper-light);font-weight:700}
+.lang-switch{display:inline-flex;gap:.4rem;align-items:center;margin-top:1.2rem;font-size:.8rem}
+.lang-switch span[aria-current]{color:var(--cream);font-weight:700}
+.lang-switch .off{opacity:.55}
+.lang-note{margin-top:.4rem;font-size:.78rem;opacity:.75;max-width:34ch}
+
+/* --- Scroll-Reveal (nur mit JS aktiv) -------------------------------- */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease) var(--rd,0s),transform .7s var(--ease) var(--rd,0s)}
+.js .reveal.is-visible{opacity:1;transform:none}
+
+/* Gestaffelte Kinder: der Container wird beobachtet, die Kinder laufen versetzt an. */
+.js .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .stagger.is-visible > *{opacity:1;transform:none}
+.js .stagger > *:nth-child(2){transition-delay:.08s}
+.js .stagger > *:nth-child(3){transition-delay:.16s}
+.js .stagger > *:nth-child(4){transition-delay:.24s}
+.js .stagger > *:nth-child(5){transition-delay:.32s}
+.js .stagger > *:nth-child(6){transition-delay:.40s}
+.js .gal-col:nth-child(1) .reveal:nth-child(2){--rd:.24s}
+.js .gal-col:nth-child(2) .reveal:nth-child(1){--rd:.08s}
+.js .gal-col:nth-child(2) .reveal:nth-child(2){--rd:.32s}
+.js .gal-col:nth-child(3) .reveal:nth-child(1){--rd:.16s}
+.js .gal-col:nth-child(3) .reveal:nth-child(2){--rd:.40s}
+
+/* Überschriften wischen von links auf */
+.js .wipe{clip-path:inset(-.35em -.15em -.4em 100%);transition:clip-path .95s var(--ease) .08s}
+.js .is-visible .wipe,.js .wipe.is-visible{clip-path:inset(-.35em -.15em -.4em -.15em)}
+.rule{display:block;height:2px;width:82px;margin-top:1.15rem;background:var(--copper);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s var(--ease) .3s}
+.rule--on-dark{background:var(--copper-light)}
+.js .is-visible .rule{transform:scaleX(1)}
+
+/* Lesefortschritt: rein CSS über die Scroll-Timeline, sonst schlicht unsichtbar. */
+.progress-bar{
+  position:fixed;top:var(--ribbon-h);left:0;right:0;height:3px;z-index:110;
+  background:linear-gradient(90deg,var(--copper),var(--copper-light));
+  transform:scaleX(0);transform-origin:0 50%;pointer-events:none;
+}
+@keyframes progressGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@supports (animation-timeline:scroll()){
+  .progress-bar{animation:progressGrow linear both;animation-timeline:scroll(root block)}
+}
+
+/* Sanfte Bilddrift beim Durchscrollen, wo die View-Timeline unterstützt wird */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    @keyframes tileDrift{from{transform:scale(1.09) translateY(2.4%)}to{transform:scale(1.09) translateY(-2.4%)}}
+    .tile .ph-inner,.lunch-media .ph-inner{animation:tileDrift linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  }
+}
+
+/* --- Breakpoints ----------------------------------------------------- */
+@media (min-width:600px){
+  .principles{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr 1fr}
+  .field--full{grid-column:1/-1}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+}
+@media (min-width:768px){
+  .lunch-head{grid-template-columns:minmax(0,1.05fr) minmax(0,.9fr);align-items:center}
+  .week{grid-template-columns:1fr 1fr}
+  .kitchen-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+  .visit-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start}
+  .footer-grid{grid-template-columns:1.6fr 1fr 1fr}
+  .dish{grid-template-columns:minmax(0,1fr) auto}
+  /* Die Bildspalte der Speisekarte bleibt bis 1080px unter der Karte,
+     damit das Foto nicht zur Briefmarke schrumpft. */
+  .menu-aside{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start}
+}
+@media (min-width:1080px){
+  .nav-toggle{display:none}
+  .nav-mobile{display:none !important}
+  .nav-desktop{display:block}
+  .header-cta{display:inline-flex;margin-left:1.5rem}
+  .week{grid-template-columns:repeat(5,1fr)}
+  .day{gap:1rem}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);align-items:start}
+  .gal-col{display:grid;gap:clamp(1rem,2.4vw,1.5rem);align-content:start}
+  .gal-col:nth-child(2){margin-top:clamp(1.5rem,4vw,3.25rem)}
+  .gal-col:nth-child(3){margin-top:clamp(.5rem,1.5vw,1.25rem)}
+  .reserve-inner{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+  .principles{gap:1.5rem}
+  .menu-layout{grid-template-columns:minmax(0,1fr) minmax(0,.44fr)}
+  .menu-aside{grid-template-columns:minmax(0,1fr);position:sticky;top:calc(var(--ribbon-h) + 6.5rem)}
+}
+
+/* --- Reduced Motion --------------------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+  .js .reveal{opacity:1;transform:none}
+  .js .stagger > *{opacity:1 !important;transform:none !important}
+  .js .wipe{clip-path:none !important}
+  .rule{transform:scaleX(1) !important}
+  .art-draw,.art-pulse{stroke-dasharray:none !important;stroke-dashoffset:0 !important}
+  .tile:hover,.btn:hover,.zoom:hover img{transform:none !important}
+  .hero-media,.hero-media .ph-inner,.tile .ph-inner,.lunch-media .ph-inner{transform:none !important}
+  .js .ph img{opacity:1 !important}
+  .ph::before{display:none}
+  .progress-bar,.hero-scroll{display:none}
+}
+
+/* --- Hero-Illustration: dezente Animation ---------------------------- */
+@keyframes artDraw{to{stroke-dashoffset:0}}
+@keyframes artPulse{0%,100%{opacity:.55}50%{opacity:.95}}
+.art-draw{stroke-dasharray:900;stroke-dashoffset:900;animation:artDraw 2.4s var(--ease) forwards}
+.art-draw--2{animation-delay:.25s}
+.art-draw--3{animation-delay:.5s}
+.art-pulse{animation:artPulse 7s ease-in-out infinite}
+</style>
+</head>
+<body>
+<!-- Arvenna-Hinweisband. Der Link zeigt relativ auf die Hauptseite dieses Repos,
+     damit die lokale Vorschau ohne Server funktioniert. -->
+<div class="arv-ribbon" id="arvRibbon">
+  <p>Demoprojekt der Webagentur <a href="../../index.html">Arvenna · arvenna.ch</a></p>
+  <button type="button" aria-label="Hinweis schliessen">&times;</button>
+</div>
+
+<!-- Lesefortschritt, rein über die CSS-Scroll-Timeline. Ohne Unterstützung unsichtbar. -->
+<div class="progress-bar" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <rect width="64" height="64" rx="14" fill="#1E2E22"/>
+        <circle cx="32" cy="25" r="9.5" fill="#E08A47"/>
+        <path d="M7 47 L23 31 L34 41 L45 32 L57 47 Z" fill="#A8BE8E"/>
+        <path d="M7 47 H57" stroke="#F7F2E6" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+      </svg>
+      <span>
+        <span class="brand-name">Sonnenhof</span>
+        <span class="brand-sub">Gasthaus · Meggen</span>
+      </span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#speisekarte">Speisekarte</a></li>
+        <li><a href="#mittagsmenue">Mittagsmenü</a></li>
+        <li><a href="#kueche">Unsere Küche</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary header-cta" href="#reservation">Tisch reservieren</a>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMobile">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      Menü
+    </button>
+  </div>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Navigation (mobil)" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#speisekarte">Speisekarte</a></li>
+        <li><a href="#mittagsmenue">Mittagsmenü</a></li>
+        <li><a href="#kueche">Unsere Küche</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#oeffnungszeiten">Öffnungszeiten &amp; Anfahrt</a></li>
+      </ul>
+      <a class="btn btn--primary btn--wide" href="#reservation">Tisch reservieren</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="top">
+    <!-- Vollflächiges Raumfoto mit langsamer Ken-Burns-Fahrt und Parallaxe -->
+    <div class="hero-media ph" data-parallax="0.16" style="--lqip:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAUAA0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnIWKyYRc1b8q6fkRGiNRBMpbKOPbip5dRmjbCsrD1rJxTZqpNI1miRmJZQeaY9lASDsoooQM//9k=)">
+      <span class="ph-inner">
+        <img src="../../assets/img/gastro/stube-hero-1600.webp"
+             srcset="../../assets/img/gastro/stube-hero-800.webp 800w,
+                     ../../assets/img/gastro/stube-hero-1600.webp 1600w"
+             sizes="100vw"
+             alt="Abendlich beleuchtete Gaststube mit gedeckten Holztischen, brennenden Kerzen und tief hängenden Lampen"
+             width="1600" height="2399" loading="eager" fetchpriority="high" decoding="async">
+      </span>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <span class="hero-scroll" aria-hidden="true"></span>
+
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Gasthaus am Vierwaldstättersee</p>
+        <h1>Regionale Küche,<br>die nach <em>Zuhause</em> schmeckt</h1>
+        <p class="lead">Im Sonnenhof kochen wir mit dem, was rund um den See wächst und wachsen darf. Frisch, saisonal und ohne Umwege auf Ihren Teller, in einer Stube, in der man gerne sitzen bleibt.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#reservation">Tisch reservieren</a>
+          <a class="btn btn--ghost-light" href="#speisekarte">Zur Speisekarte</a>
+        </div>
+        <ul class="hero-facts">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 3 4.5 5.6 4.5 8.2A4.5 4.5 0 0 1 12 15.7a4.5 4.5 0 0 1-4.5-4.5C7.5 8.6 9 6 12 3Z"/><path d="M12 15.7V21"/></svg>
+            Saisonale Karte
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20 9 8l4 6 3-4 5 10Z"/><circle cx="17.5" cy="5.5" r="2.5"/></svg>
+            Produkte aus der Region
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+            Mittagsmenü Mo–Fr
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+  <!-- ========================= SPEISEKARTE ========================= -->
+  <section class="section" id="speisekarte">
+    <div class="wrap">
+      <div class="sect-head reveal">
+        <p class="eyebrow">Speisekarte</p>
+        <h2 class="h-sect wipe">Was gerade auf dem Tisch steht</h2>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="lead">Unsere Karte folgt den Jahreszeiten. Was hier steht, kochen wir heute, und wenn ein Produkt ausgeht, ist es ausgegangen. Das gehört für uns dazu.</p>
+      </div>
+
+      <div class="menu-layout">
+      <div class="menu-main">
+      <ul class="menu-legend reveal">
+        <li><span class="tag tag--veg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>
+          Vegetarisch</span></li>
+        <li><span class="tag tag--season">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          Saisonal</span></li>
+      </ul>
+
+      <div class="tablist reveal" role="tablist" aria-label="Bereiche der Speisekarte">
+        <button type="button" role="tab" id="tab-vorspeisen" aria-controls="panel-vorspeisen" aria-selected="true">Vorspeisen</button>
+        <button type="button" role="tab" id="tab-haupt" aria-controls="panel-haupt" aria-selected="false" tabindex="-1">Hauptgänge</button>
+        <button type="button" role="tab" id="tab-dessert" aria-controls="panel-dessert" aria-selected="false" tabindex="-1">Desserts</button>
+      </div>
+
+      <div id="menuPanels">
+      <div class="tabpanel reveal" id="panel-vorspeisen" role="tabpanel" aria-labelledby="tab-vorspeisen" tabindex="0">
+        <ul class="dish-list">
+          <li class="dish">
+            <h3 class="dish-name">Kürbissuppe mit geröstetem Kernöl</h3>
+            <p class="dish-price">CHF 14</p>
+            <p class="dish-desc">Samtig aufgeschlagen, dazu geröstete Kerne und ein Tupfer Sauerrahm.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span><span class="tag tag--season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>Saisonal</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Luzerner Rohschinken mit Birnenchutney</h3>
+            <p class="dish-price">CHF 18</p>
+            <p class="dish-desc">Hauchdünn aufgeschnitten, dazu Chutney von der Herbstbirne und Sauerteigbrot aus unserem Ofen.</p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Blattsalat mit Apfel, Baumnuss und Alpkäse</h3>
+            <p class="dish-price">CHF 16</p>
+            <p class="dish-desc">Blattsalate aus der Gärtnerei, gehobelter Alpkäse und ein Dressing mit Baumnussöl.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Hausgebeizter Saibling mit Gurke und Dill</h3>
+            <p class="dish-price">CHF 21</p>
+            <p class="dish-desc">Zwei Tage in Salz und Zitrus gebeizt, dazu Gurkensalat und ein Löffel Meerrettichrahm.</p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Randensalat mit Ziegenfrischkäse</h3>
+            <p class="dish-price">CHF 15</p>
+            <p class="dish-desc">Im Ofen gegarte Randen, cremiger Ziegenkäse, Honig und geröstete Sonnenblumenkerne.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span><span class="tag tag--season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>Saisonal</span></p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tabpanel reveal" id="panel-haupt" role="tabpanel" aria-labelledby="tab-haupt" tabindex="0" hidden>
+        <ul class="dish-list">
+          <li class="dish">
+            <h3 class="dish-name">Zürcher Geschnetzeltes mit Rösti</h3>
+            <p class="dish-price">CHF 38</p>
+            <p class="dish-desc">Kalbfleisch und Champignons in Rahmsauce, dazu eine Rösti aus der Pfanne.</p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Rehpfeffer mit Spätzli, Rotkraut und Birne</h3>
+            <p class="dish-price">CHF 44</p>
+            <p class="dish-desc">Langsam geschmort, mit selbstgeschabten Spätzli und einer Rotweinbirne.</p>
+            <p class="dish-tags"><span class="tag tag--season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>Saisonal</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Eglifilets aus dem See mit Zitronenbutter</h3>
+            <p class="dish-price">CHF 42</p>
+            <p class="dish-desc">In Butter gebraten, dazu Petersilienkartoffeln und ein kleiner Blattsalat.</p>
+            <p class="dish-tags"><span class="tag tag--season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>Saisonal</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Kalbsschnitzel Wiener Art</h3>
+            <p class="dish-price">CHF 36</p>
+            <p class="dish-desc">In Butterschmalz gebacken, dazu lauwarmer Kartoffelsalat und Preiselbeeren.</p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Rindsentrecôte vom Hof Waldegg</h3>
+            <p class="dish-price">CHF 48</p>
+            <p class="dish-desc">Am Stück gebraten, mit Kräuterbutter, Ofengemüse und Bratkartoffeln.</p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Pilzrisotto mit Alpkäse und Kräutern</h3>
+            <p class="dish-price">CHF 29</p>
+            <p class="dish-desc">Cremig gerührt, mit Waldpilzen, gehobeltem Alpkäse und frischen Kräutern aus dem Garten.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span><span class="tag tag--season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>Saisonal</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Gerstotto mit Randen und Ziegenfrischkäse</h3>
+            <p class="dish-price">CHF 28</p>
+            <p class="dish-desc">Rollgerste aus dem Entlebuch, geschmort mit Randen, dazu Ziegenfrischkäse und Baumnüsse.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span></p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tabpanel reveal" id="panel-dessert" role="tabpanel" aria-labelledby="tab-dessert" tabindex="0" hidden>
+        <ul class="dish-list">
+          <li class="dish">
+            <h3 class="dish-name">Warmer Apfelstrudel mit Vanillesauce</h3>
+            <p class="dish-price">CHF 13</p>
+            <p class="dish-desc">Dünner Teig, viel Apfel, dazu warme Vanillesauce.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Meringue mit Doppelrahm</h3>
+            <p class="dish-price">CHF 14</p>
+            <p class="dish-desc">Knusprige Meringue, Doppelrahm aus dem Entlebuch und marinierte Beeren.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Schokoladenmousse mit Kirsch</h3>
+            <p class="dish-price">CHF 12</p>
+            <p class="dish-desc">Dunkle Schokolade, luftig aufgeschlagen, mit eingelegten Kirschen.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Birnenkompott mit Baumnuss-Glace</h3>
+            <p class="dish-price">CHF 12</p>
+            <p class="dish-desc">Lauwarmes Kompott von der Herbstbirne, dazu hausgemachte Baumnuss-Glace.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span><span class="tag tag--season"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>Saisonal</span></p>
+          </li>
+          <li class="dish">
+            <h3 class="dish-name">Käseauswahl aus der Zentralschweiz</h3>
+            <p class="dish-price">CHF 16</p>
+            <p class="dish-desc">Drei gereifte Käse, dazu Feigensenf, Baumnüsse und Früchtebrot.</p>
+            <p class="dish-tags"><span class="tag tag--veg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 5 4c0 4 3 7 7 7Z"/><path d="M12 13c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6Z"/></svg>Vegetarisch</span></p>
+          </li>
+        </ul>
+      </div>
+
+      </div><!-- /#menuPanels -->
+
+      <p class="menu-note reveal">Alle Preise in Schweizer Franken, inklusive Mehrwertsteuer. Informationen zu Allergenen und Herkunft erhalten Sie jederzeit bei unserem Serviceteam, fragen Sie uns einfach.</p>
+      </div><!-- /.menu-main -->
+
+        <aside class="menu-aside reveal" aria-label="Bild und Empfehlung aus der Küche">
+          <figure class="menu-figure">
+            <div class="ph ph--4x3 frame zoom" style="--lqip:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAPABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDfkgimG1wCtYl3psMUpEJ2sfWteWNmA8p9tKsYOBKAzetDuNWRzb2s6NjYT9KK6gRL3GaKYrn/2Q==)">
+              <span class="ph-inner">
+                <img src="../../assets/img/gastro/teller-1-800.webp"
+                     srcset="../../assets/img/gastro/teller-1-800.webp 800w,
+                             ../../assets/img/gastro/teller-1-1600.webp 1600w"
+                     sizes="(max-width: 767px) 100vw, (max-width: 1079px) 34vw, 30vw"
+                     alt="Frisch angerichteter Teller aus der Sonnenhof-Küche, nah fotografiert"
+                     width="1600" height="1200" loading="lazy" decoding="async">
+              </span>
+            </div>
+            <figcaption class="media-cap">Angerichtet wird, was am Morgen geliefert wurde. Deshalb wechselt die Karte im Lauf des Jahres mehrmals.</figcaption>
+          </figure>
+
+          <div class="tip-card">
+            <h3>Heute empfehlen wir</h3>
+            <p>Das Pilzrisotto mit Alpkäse und Kräutern. Die Pilze kommen aus dem Wald oberhalb von Meggen, gerührt wird bis kurz vor dem Servieren.</p>
+            <span class="tip-price">CHF 29</span>
+          </div>
+        </aside>
+      </div><!-- /.menu-layout -->
+    </div>
+  </section>
+  <!-- ========================= MITTAGSMENÜ ========================= -->
+  <section class="section lunch" id="mittagsmenue">
+    <div class="wrap">
+      <div class="lunch-head reveal">
+        <div class="lunch-intro">
+          <p class="eyebrow eyebrow--on-dark">Mittagsmenü</p>
+          <h2 class="h-sect wipe">Woche vom 27. bis 31. Juli</h2>
+          <span class="rule rule--on-dark" aria-hidden="true"></span>
+          <p class="lead lead--on-dark">Von Montag bis Freitag servieren wir mittags zwei Menüs, eines mit Fleisch oder Fisch, eines vegetarisch. Beide kommen mit Tagessuppe oder kleinem Salat.</p>
+          <p class="lunch-price">
+            <strong>CHF 24</strong>
+            <span>Tagesteller · mit Suppe oder Salat CHF 28</span>
+          </p>
+        </div>
+
+        <figure class="lunch-media">
+          <div class="ph ph--3x2 frame zoom" style="--lqip:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDoFle2iLuc+1Ry6lH8ikH5+9U0v3ubUsygVSkzLCAx4U8VIzUMgJ4PFFU0yqAA9qKYH//Z)">
+            <span class="ph-inner">
+              <img src="../../assets/img/gastro/teller-2-800.webp"
+                   srcset="../../assets/img/gastro/teller-2-800.webp 800w,
+                           ../../assets/img/gastro/teller-2-1600.webp 1600w"
+                   sizes="(max-width: 767px) 100vw, 44vw"
+                   alt="Sorgfältig angerichteter Tagesteller mit Gemüse und Sauce"
+                   width="1600" height="1067" loading="lazy" decoding="async">
+            </span>
+          </div>
+          <figcaption class="media-cap media-cap--on-dark">Mittags geht es zügig: Wer um zwölf kommt, ist um eins wieder draussen.</figcaption>
+        </figure>
+      </div>
+
+      <ol class="week stagger">
+        <li class="day">
+          <div class="day-head"><h3 class="day-name">Montag</h3><span class="day-date">27. Juli</span></div>
+          <div class="day-dishes">
+            <p class="day-dish"><em>Tagesteller</em><b>Siedfleisch mit Bouillonkartoffeln</b><span>Dazu Meerrettich, Senfgurken und Apfelmus.</span></p>
+            <p class="day-dish day-dish--veg"><em>Vegetarisch</em><b>Kräuterspätzli mit Sommergemüse</b><span>Selbstgeschabt, mit Erbsen, Zucchetti und Bergkäse.</span></p>
+          </div>
+        </li>
+        <li class="day">
+          <div class="day-head"><h3 class="day-name">Dienstag</h3><span class="day-date">28. Juli</span></div>
+          <div class="day-dishes">
+            <p class="day-dish"><em>Tagesteller</em><b>Pouletbrust an Zitronenthymian</b><span>Mit Ratatouille und Rosmarinkartoffeln aus dem Ofen.</span></p>
+            <p class="day-dish day-dish--veg"><em>Vegetarisch</em><b>Randen-Risotto mit Ziegenkäse</b><span>Cremig gerührt, mit gerösteten Kernen und Kräuteröl.</span></p>
+          </div>
+        </li>
+        <li class="day">
+          <div class="day-head"><h3 class="day-name">Mittwoch</h3><span class="day-date">29. Juli</span></div>
+          <div class="day-dishes">
+            <p class="day-dish"><em>Tagesteller</em><b>Kalbsbratwurst mit Zwiebelsauce</b><span>Dazu eine Rösti aus der Pfanne und Buttergemüse.</span></p>
+            <p class="day-dish day-dish--veg"><em>Vegetarisch</em><b>Ofengemüse mit Hummus</b><span>Mit warmem Fladenbrot und Joghurt-Minze-Dip.</span></p>
+          </div>
+        </li>
+        <li class="day">
+          <div class="day-head"><h3 class="day-name">Donnerstag</h3><span class="day-date">30. Juli</span></div>
+          <div class="day-dishes">
+            <p class="day-dish"><em>Tagesteller</em><b>Eglifilet mit Petersilienkartoffeln</b><span>In Butter gebraten, mit Zitrone und Blattsalat.</span></p>
+            <p class="day-dish day-dish--veg"><em>Vegetarisch</em><b>Gemüse-Wähe mit Blattsalat</b><span>Auf Sauerteigboden, mit Lauch, Rüebli und Alpkäse.</span></p>
+          </div>
+        </li>
+        <li class="day">
+          <div class="day-head"><h3 class="day-name">Freitag</h3><span class="day-date">31. Juli</span></div>
+          <div class="day-dishes">
+            <p class="day-dish"><em>Tagesteller</em><b>Rindsvoressen mit Hörnli</b><span>Lange geschmort, mit Rotwein, Speck und Marktgemüse.</span></p>
+            <p class="day-dish day-dish--veg"><em>Vegetarisch</em><b>Linsencurry mit Joghurt</b><span>Mit Basmatireis, Koriander und geröstetem Naan.</span></p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="lunch-foot reveal">Wir servieren mittags von 11.30 bis 14.00 Uhr. Reservieren lohnt sich, über Mittag sind wir schnell voll. Das Menü der kommenden Woche steht jeweils ab Freitagnachmittag hier.</p>
+    </div>
+  </section>
+
+  <!-- =========================== KÜCHE ============================= -->
+  <section class="section" id="kueche">
+    <div class="wrap kitchen-grid">
+      <div class="kitchen-text reveal">
+        <p class="eyebrow">Unsere Küche</p>
+        <h2 class="h-sect wipe">Wir kochen so, wie wir selbst gerne essen</h2>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="lead">Ohne Umwege, ohne Effekthascherei, dafür mit Zutaten, deren Herkunft wir kennen.</p>
+        <p style="margin-top:1.4rem">Was auf der Karte steht, richtet sich nach dem, was gerade reif ist, und nicht umgekehrt. Deshalb ändert sich unsere Karte mehrmals im Jahr, und das eine oder andere Gericht bleibt nur ein paar Wochen. Fonds und Saucen ziehen wir selbst, Fleisch verarbeiten wir im Ganzen, und das Brot backen wir jeden Morgen frisch.</p>
+        <p>Vegetarische Gerichte sind bei uns keine Randnotiz. Sagen Sie uns bei der Reservation Bescheid, wenn Sie etwas nicht essen. Wir kochen gerne auch ausserhalb der Karte, wenn es die Küche zulässt.</p>
+
+        <div class="principles stagger">
+          <div class="principle">
+            <span class="principle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+            </span>
+            <div>
+              <h3>Saisonal kochen</h3>
+              <p>Die Karte folgt dem Jahr, nicht dem Katalog. Im Sommer der Garten, im Herbst der Wald.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-10.5A7 7 0 0 0 5 10.5C5 15.8 12 21 12 21Z"/><circle cx="12" cy="10.3" r="2.4"/></svg>
+            </span>
+            <div>
+              <h3>Kurze Wege</h3>
+              <p>Die meisten unserer Lieferanten erreichen wir mit dem Auto in weniger als einer halben Stunde.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/><path d="M8.5 8.5 12 3l3.5 5.5"/><path d="M6 12h12"/></svg>
+            </span>
+            <div>
+              <h3>Handarbeit</h3>
+              <p>Spätzli, Fonds, Glace, Brot: was wir selbst machen können, machen wir selbst.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M2 20h20"/><path d="M9 7V4h6v3"/><path d="M9 20v-5h6v5"/></svg>
+            </span>
+            <div>
+              <h3>Platz für alle</h3>
+              <p>Gaststube, Terrasse und ein Saal für Familienfeste und Vereinsanlässe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kitchen-side">
+        <figure class="kitchen-art reveal">
+          <!-- Gezeichnete Bildwelt: Bergzug im «Teller-Fenster», Besteck als Linienzeichnung -->
+          <svg viewBox="0 0 560 520" role="img" aria-label="Illustration: ein Bergzug am Seeufer, gerahmt von einem Teller mit Besteck" focusable="false">
+                  <defs>
+                    <clipPath id="plateClip"><circle cx="280" cy="250" r="152"/></clipPath>
+                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#26402D"/><stop offset="100%" stop-color="#1C2C21"/>
+                    </linearGradient>
+                  </defs>
+
+                  <g clip-path="url(#plateClip)">
+                    <rect x="120" y="90" width="320" height="320" fill="url(#skyGrad)"/>
+                    <circle class="art-pulse" cx="348" cy="172" r="38" fill="#E08A47" opacity=".85"/>
+                    <circle cx="348" cy="172" r="56" fill="none" stroke="#E08A47" stroke-width="1" opacity=".38"/>
+                    <circle cx="348" cy="172" r="76" fill="none" stroke="#E08A47" stroke-width="1" opacity=".2"/>
+                    <path d="M110 300 L156 238 L196 270 L248 202 L294 258 L342 220 L394 272 L450 302 L450 420 L110 420 Z" fill="#35513B"/>
+                    <path d="M110 344 L154 298 L208 332 L264 284 L320 330 L374 302 L432 346 L450 358 L450 420 L110 420 Z" fill="#2B4030"/>
+                    <path d="M110 388 L172 354 L242 380 L312 352 L382 382 L450 360 L450 420 L110 420 Z" fill="#20342A"/>
+                    <g fill="none" stroke="#A8BE8E" stroke-width="1.4" stroke-linejoin="round" opacity=".5">
+                      <path class="art-draw" d="M110 300 L156 238 L196 270 L248 202 L294 258 L342 220 L394 272 L450 302"/>
+                      <path class="art-draw art-draw--2" d="M110 344 L154 298 L208 332 L264 284 L320 330 L374 302 L432 346"/>
+                      <path class="art-draw art-draw--3" d="M110 388 L172 354 L242 380 L312 352 L382 382 L450 360"/>
+                    </g>
+                    <g stroke="#A8BE8E" stroke-width="1" opacity=".22" stroke-linecap="round">
+                      <path d="M132 400 H430"/><path d="M148 409 H414"/><path d="M170 418 H392"/>
+                    </g>
+                  </g>
+
+                  <circle cx="280" cy="250" r="152" fill="none" stroke="#E08A47" stroke-width="2"/>
+                  <circle cx="280" cy="250" r="140" fill="none" stroke="#F7F2E6" stroke-width="1" opacity=".28"/>
+
+                  <!-- Gabel -->
+                  <g stroke="#E4D9C1" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".9">
+                    <path d="M52 172 V226"/><path d="M66 172 V226"/><path d="M80 172 V226"/>
+                    <path d="M52 226 q14 18 28 0"/>
+                    <path d="M66 240 V346"/>
+                  </g>
+                  <!-- Messer -->
+                  <g opacity=".9">
+                    <path d="M500 172 c18 22 18 62 0 84 Z" fill="#E4D9C1"/>
+                    <path d="M500 256 V346" stroke="#E4D9C1" stroke-width="2.6" stroke-linecap="round"/>
+                  </g>
+                  <!-- Kräuterzweig -->
+                  <g fill="none" stroke="#A8BE8E" stroke-width="1.8" stroke-linecap="round" opacity=".75">
+                    <path d="M232 452 q48 26 96 8"/>
+                    <path d="M256 460 q-6 -18 10 -24 q10 16 -10 24Z" fill="#A8BE8E" opacity=".5"/>
+                    <path d="M290 468 q-4 -19 12 -24 q9 17 -12 24Z" fill="#A8BE8E" opacity=".5"/>
+                    <path d="M320 462 q-2 -19 14 -22 q7 17 -14 22Z" fill="#A8BE8E" opacity=".5"/>
+                  </g>
+                </svg>
+        </figure>
+      <aside class="suppliers reveal">
+        <h3>Von hier aus der Nachbarschaft</h3>
+        <p>Diese Betriebe beliefern uns regelmässig. Wir kennen die Menschen dahinter persönlich.</p>
+        <ul class="supplier-list">
+          <li>
+            <span class="supplier-name">Hof Waldegg, Adligenswil</span>
+            <span class="supplier-what">Rind und Kalb aus Weidehaltung</span>
+          </li>
+          <li>
+            <span class="supplier-name">Fischerei Bachmann, Küssnacht</span>
+            <span class="supplier-what">Egli, Felchen und Saibling aus dem See</span>
+          </li>
+          <li>
+            <span class="supplier-name">Gärtnerei Sonnhalde, Ebikon</span>
+            <span class="supplier-what">Gemüse, Salate und Kräuter</span>
+          </li>
+          <li>
+            <span class="supplier-name">Käserei Wiesengrund, Entlebuch</span>
+            <span class="supplier-what">Alpkäse, Butter und Doppelrahm</span>
+          </li>
+          <li>
+            <span class="supplier-name">Mosterei Zwyssig, Buchrain</span>
+            <span class="supplier-what">Apfelsaft, Most und Essig</span>
+          </li>
+        </ul>
+      </aside>
+      </div><!-- /.kitchen-side -->
+    </div>
+  </section>
+  <!-- ========================== GALERIE ============================ -->
+  <section class="section" id="galerie" style="background:var(--cream-2)">
+    <div class="wrap">
+      <div class="sect-head reveal">
+        <p class="eyebrow">Galerie</p>
+        <h2 class="h-sect wipe">Ein Blick ins Haus</h2>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="lead">Gaststube, Terrassenstube und Saal, dazu ein paar gezeichnete Blicke auf das, was sonst noch zum Haus gehört.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gal-col">
+          <figure class="tile reveal">
+            <div class="ph ph--4x5 zoom" style="--lqip:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAUAA0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnkEiSbU5q4LC8l+bGKd5OyQGUMjA5yBTpdTmhbarbh9KxaTehsm0tTpjBHJGN6g8VSksbdm5jFFFAH//Z)">
+              <span class="ph-inner">
+                <img src="../../assets/img/gastro/stube-kabine-800.webp"
+                     srcset="../../assets/img/gastro/stube-kabine-800.webp 800w,
+                             ../../assets/img/gastro/stube-kabine-1600.webp 1600w"
+                     sizes="(max-width: 599px) 100vw, (max-width: 1079px) 46vw, 31vw"
+                     alt="Gaststube mit Holzvertäfelung, gedeckten Tischen und warmem Licht"
+                     width="1600" height="2400" loading="lazy" decoding="async">
+              </span>
+            </div>
+            <figcaption>Die Gaststube<small>Platz für rund vierzig Gäste</small></figcaption>
+          </figure>
+          <figure class="tile reveal">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration des Gewölbekellers mit Weinflaschen und Fass" focusable="false">
+              <rect width="400" height="300" fill="#16231A"/>
+              <g fill="none" stroke="#E4D9C1" stroke-width="1.6" opacity=".45">
+                <path d="M30 260V150a70 70 0 0 1 140 0v110"/><path d="M230 260V150a70 70 0 0 1 140 0v110"/>
+                <path d="M60 260V158a40 40 0 0 1 80 0v102"/><path d="M260 260V158a40 40 0 0 1 80 0v102"/>
+              </g>
+              <g fill="#A8BE8E" opacity=".65">
+                <path d="M78 200h6v-16h-6zM72 200h18v46a6 6 0 0 1-6 6H78a6 6 0 0 1-6-6z"/>
+                <path d="M104 200h6v-16h-6zM98 200h18v46a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6z"/>
+                <path d="M130 200h6v-16h-6zM124 200h18v46a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6z"/>
+              </g>
+              <g fill="#E08A47" opacity=".75">
+                <path d="M278 200h6v-16h-6zM272 200h18v46a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6z"/>
+                <path d="M304 200h6v-16h-6zM298 200h18v46a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6z"/>
+              </g>
+              <g fill="none" stroke="#3A2E24" stroke-width="14"><path d="M0 274h400"/></g>
+              <g fill="none" stroke="#E08A47" stroke-width="1.4" opacity=".5"><ellipse cx="200" cy="228" rx="26" ry="34"/><path d="M174 214h52M174 242h52"/></g>
+            </svg>
+            <figcaption>Der Weinkeller</figcaption>
+          </figure>
+        </div>
+
+        <div class="gal-col">
+          <figure class="tile reveal">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration eines angerichteten Tellers in abstrakter Linienzeichnung" focusable="false">
+              <rect width="400" height="300" fill="#3A2E24"/>
+              <circle cx="200" cy="150" r="112" fill="#F7F2E6" opacity=".07"/>
+              <circle cx="200" cy="150" r="112" fill="none" stroke="#E4D9C1" stroke-width="2" opacity=".6"/>
+              <circle cx="200" cy="150" r="92" fill="none" stroke="#E08A47" stroke-width="1.4" opacity=".7"/>
+              <!-- Asymmetrisch angerichtet: Saucenzug unten links, Medaillons diagonal -->
+              <path d="M128 208 C142 176 172 162 206 168" fill="none" stroke="#E08A47" stroke-width="9" stroke-linecap="round" opacity=".85"/>
+              <path d="M206 168 C224 172 238 184 244 200" fill="none" stroke="#E08A47" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+              <g fill="#E4D9C1" opacity=".92"><circle cx="164" cy="128" r="16"/><circle cx="202" cy="146" r="20"/><circle cx="242" cy="164" r="13"/></g>
+              <g fill="none" stroke="#3A2E24" stroke-width="1.6" opacity=".45"><circle cx="164" cy="128" r="9"/><circle cx="202" cy="146" r="11"/></g>
+              <g fill="#A8BE8E" opacity=".9"><path d="M256 130q-14-20 0-34 16 18 0 34Z"/><path d="M232 108q-6-14 6-22 8 14-6 22Z" opacity=".7"/></g>
+              <g fill="#E4D9C1" opacity=".75"><circle cx="150" cy="176" r="3"/><circle cx="272" cy="196" r="2.6"/><circle cx="188" cy="102" r="2.2"/><circle cx="286" cy="142" r="2"/></g>
+            </svg>
+            <figcaption>Vom Teller</figcaption>
+          </figure>
+          <figure class="tile reveal">
+            <div class="ph ph--3x4 zoom" style="--lqip:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAUAA8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCnJpzC6kEBJC8daqXaOrbZOCOKutO4u5CoKZ7GqV7IGYlpMnPSs5RRcWy5qchW9cDGCKxZzziiirZKP//Z)">
+              <span class="ph-inner">
+                <img src="../../assets/img/gastro/terrasse-800.webp"
+                     srcset="../../assets/img/gastro/terrasse-800.webp 800w,
+                             ../../assets/img/gastro/terrasse-1600.webp 1600w"
+                     sizes="(max-width: 599px) 100vw, (max-width: 1079px) 46vw, 31vw"
+                     alt="Heller Gastraum mit Kronleuchter, Pflanzen und gedeckten Tischen"
+                     width="1600" height="2133" loading="lazy" decoding="async">
+              </span>
+            </div>
+            <figcaption>Die Terrassenstube<small>Bei schönem Wetter ab 11.00 Uhr</small></figcaption>
+          </figure>
+        </div>
+
+        <div class="gal-col">
+          <figure class="tile reveal">
+            <div class="ph ph--2x3 zoom" style="--lqip:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAUAAsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDOinhYcxncfSrW2U9GIH1qqJEC9vqKkETsMhzg1zumjpVRmanKE9xS+dIOAxoorY5z/9k=)">
+              <span class="ph-inner">
+                <img src="../../assets/img/gastro/balken-800.webp"
+                     srcset="../../assets/img/gastro/balken-800.webp 800w,
+                             ../../assets/img/gastro/balken-1600.webp 1600w"
+                     sizes="(max-width: 599px) 100vw, (max-width: 1079px) 46vw, 31vw"
+                     alt="Heller Speisesaal unter schweren Holzbalken mit langen Tischreihen"
+                     width="1600" height="2844" loading="lazy" decoding="async">
+              </span>
+            </div>
+            <figcaption>Der Saal<small>Für Familienfeste und Vereinsanlässe</small></figcaption>
+          </figure>
+          <figure class="tile reveal">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration eines Abends am Fenster mit Kerzenlicht" focusable="false">
+              <defs><radialGradient id="glowGrad" cx="50%" cy="62%" r="55%"><stop offset="0%" stop-color="#E08A47" stop-opacity=".55"/><stop offset="100%" stop-color="#E08A47" stop-opacity="0"/></radialGradient></defs>
+              <rect width="400" height="300" fill="#1E2E22"/>
+              <rect x="88" y="26" width="224" height="180" rx="10" fill="#16231A" stroke="#3A2E24" stroke-width="8"/>
+              <g stroke="#3A2E24" stroke-width="8"><path d="M200 26v180M88 116h224"/></g>
+              <g stroke="#A8BE8E" stroke-width="1.2" opacity=".35"><path d="M96 150h96M96 162h96M208 150h96M208 162h96"/></g>
+              <g fill="#E08A47" opacity=".5"><circle cx="140" cy="72" r="3"/><circle cx="168" cy="56" r="2"/><circle cx="248" cy="66" r="2.5"/><circle cx="280" cy="52" r="2"/></g>
+              <rect width="400" height="300" fill="url(#glowGrad)"/>
+              <g><rect x="188" y="212" width="24" height="56" rx="4" fill="#E4D9C1" opacity=".85"/>
+                <path d="M200 190q12 12 0 22-12-10 0-22Z" fill="#E08A47"/>
+                <circle cx="200" cy="202" r="26" fill="#E08A47" opacity=".2"/></g>
+              <g fill="none" stroke="#E4D9C1" stroke-width="1.6" opacity=".5"><path d="M60 268h280"/><path d="M120 244a26 26 0 0 1 0-14M290 244a26 26 0 0 0 0-14"/></g>
+            </svg>
+            <figcaption>Am Abend</figcaption>
+          </figure>
+        </div>
+
+      </div>
+
+      <p class="gallery-hint reveal">Fotos und Zeichnungen sind hier bewusst gemischt. In einem echten Projekt stehen an beiden Stellen Ihre eigenen Bilder.</p>
+    </div>
+  </section>
+  <!-- ======================== RESERVATION ========================== -->
+  <section class="section reserve" id="reservation">
+    <div class="wrap reserve-inner">
+      <div class="reserve-aside reveal">
+        <p class="eyebrow eyebrow--on-dark">Reservation</p>
+        <h2 class="h-sect wipe">Tisch reservieren</h2>
+        <span class="rule rule--on-dark" aria-hidden="true"></span>
+        <p class="lead lead--on-dark">Schreiben Sie uns kurz, wann Sie kommen möchten. Wir bestätigen Ihre Reservation persönlich, meist innerhalb weniger Stunden.</p>
+        <p style="margin-top:1rem;color:var(--muted-dark)">Für Gruppen ab neun Personen, Familienfeste und Vereinsanlässe melden Sie sich am besten telefonisch. Dann besprechen wir gleich Saal, Menü und Zeitfenster.</p>
+
+        <ul class="reserve-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 4h4l2 5-2.5 1.5a12 12 0 0 0 5.5 5.5L15 13.5l5 2v4a1.5 1.5 0 0 1-1.7 1.5A16.5 16.5 0 0 1 3 5.7 1.5 1.5 0 0 1 4.5 4Z"/></svg>
+            <span>Telefon<br><a href="tel:+410000000000">+41 00 000 00 00</a></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+            <span>E-Mail<br><a href="mailto:info@sonnenhof-meggen.ch">info@sonnenhof-meggen.ch</a></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-10.5A7 7 0 0 0 5 10.5C5 15.8 12 21 12 21Z"/><circle cx="12" cy="10.3" r="2.4"/></svg>
+            <span>Restaurant Sonnenhof<br>Seeblickstrasse 14, 6045 Meggen</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal">
+        <h3 style="font-size:1.35rem;margin-bottom:.4rem">Ihre Anfrage</h3>
+        <p style="font-size:.92rem;color:var(--muted);margin-bottom:1.5rem">Felder mit <span class="req" aria-hidden="true">*</span> sind Pflichtfelder.</p>
+
+        <form id="reserveForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="r-datum">Datum <span class="req" aria-hidden="true">*</span></label>
+              <input type="date" id="r-datum" name="datum" required aria-describedby="err-datum">
+              <p class="error-msg" id="err-datum">Bitte wählen Sie ein Datum ab heute.</p>
+            </div>
+            <div class="field">
+              <label for="r-zeit">Uhrzeit <span class="req" aria-hidden="true">*</span></label>
+              <select id="r-zeit" name="zeit" required aria-describedby="err-zeit">
+                <option value="">Bitte wählen</option>
+                <optgroup label="Mittag">
+                  <option>11.30 Uhr</option><option>12.00 Uhr</option><option>12.30 Uhr</option><option>13.00 Uhr</option>
+                </optgroup>
+                <optgroup label="Abend">
+                  <option>17.30 Uhr</option><option>18.00 Uhr</option><option>18.30 Uhr</option><option>19.00 Uhr</option><option>19.30 Uhr</option><option>20.00 Uhr</option><option>20.30 Uhr</option>
+                </optgroup>
+              </select>
+              <p class="error-msg" id="err-zeit">Bitte wählen Sie eine Uhrzeit.</p>
+            </div>
+            <div class="field">
+              <label for="r-personen">Anzahl Personen <span class="req" aria-hidden="true">*</span></label>
+              <select id="r-personen" name="personen" required aria-describedby="err-personen">
+                <option value="">Bitte wählen</option>
+                <option>1 Person</option><option>2 Personen</option><option>3 Personen</option><option>4 Personen</option>
+                <option>5 Personen</option><option>6 Personen</option><option>7 Personen</option><option>8 Personen</option>
+                <option>9 oder mehr Personen</option>
+              </select>
+              <p class="error-msg" id="err-personen">Bitte wählen Sie die Anzahl Personen.</p>
+            </div>
+            <div class="field">
+              <label for="r-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="r-name" name="name" autocomplete="name" required aria-describedby="err-name">
+              <p class="error-msg" id="err-name">Bitte geben Sie Ihren Namen an.</p>
+            </div>
+            <div class="field">
+              <label for="r-telefon">Telefon <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="r-telefon" name="telefon" autocomplete="tel" inputmode="tel" required aria-describedby="err-telefon">
+              <p class="error-msg" id="err-telefon">Bitte geben Sie eine Telefonnummer an, unter der wir Sie erreichen.</p>
+            </div>
+            <div class="field">
+              <label for="r-mail">E-Mail <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="r-mail" name="email" autocomplete="email" required aria-describedby="err-mail">
+              <p class="error-msg" id="err-mail">Bitte geben Sie eine gültige E-Mail-Adresse an.</p>
+            </div>
+            <div class="field field--full">
+              <label for="r-bemerkungen">Bemerkungen</label>
+              <textarea id="r-bemerkungen" name="bemerkungen" placeholder="Allergien, Kinderstuhl, Tisch auf der Terrasse, Anlass …"></textarea>
+              <p class="hint">Optional, aber hilfreich, damit wir den passenden Tisch für Sie bereitstellen.</p>
+            </div>
+          </div>
+
+          <!-- Spam-Falle: für Menschen unsichtbar, wird von Bots ausgefüllt -->
+          <div class="hp" aria-hidden="true">
+            <label for="r-website">Website (bitte leer lassen)</label>
+            <input type="text" id="r-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-foot">
+            <button class="btn btn--primary btn--wide" type="submit">Reservation anfragen</button>
+            <p class="form-legal">Ihre Angaben verwenden wir ausschliesslich für die Bearbeitung dieser Reservation. Dies ist eine Demo-Seite, das Formular versendet nichts.</p>
+          </div>
+        </form>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+          <span><strong>Vielen Dank für Ihre Anfrage.</strong>In einer echten Installation ginge sie jetzt direkt an das Restaurant. Auf dieser Demo-Seite werden keine Daten übermittelt.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ÖFFNUNGSZEITEN + ANFAHRT ==================== -->
+  <section class="section" id="oeffnungszeiten">
+    <div class="wrap">
+      <div class="sect-head reveal">
+        <p class="eyebrow">Öffnungszeiten &amp; Anfahrt</p>
+        <h2 class="h-sect wipe">Wann und wo Sie uns finden</h2>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="visit-grid">
+        <div class="reveal">
+          <table class="hours-table">
+            <caption>Warme Küche bis 21.30 Uhr. An Feiertagen gelten abweichende Zeiten.</caption>
+            <tbody>
+              <tr><th scope="row">Montag</th><td>11.30–14.00 · 17.30–23.00</td></tr>
+              <tr><th scope="row">Dienstag</th><td>11.30–14.00 · 17.30–23.00</td></tr>
+              <tr><th scope="row">Mittwoch</th><td>11.30–14.00 · 17.30–23.00</td></tr>
+              <tr><th scope="row">Donnerstag</th><td>11.30–14.00 · 17.30–23.00</td></tr>
+              <tr><th scope="row">Freitag</th><td>11.30–14.00 · 17.30–23.30</td></tr>
+              <tr><th scope="row">Samstag</th><td>11.30–14.00 · 17.30–23.30</td></tr>
+              <tr class="closed"><th scope="row">Sonntag</th><td>Ruhetag</td></tr>
+            </tbody>
+          </table>
+          <p class="hours-note">Die Terrasse ist bei schönem Wetter ab 11.00 Uhr geöffnet. Für Anlässe im Saal öffnen wir auch ausserhalb dieser Zeiten. Sprechen Sie uns an.</p>
+        </div>
+
+        <div class="reveal">
+          <div class="map-frame">
+            <svg viewBox="0 0 800 480" role="img" aria-label="Stilisierte Karte: Der Sonnenhof liegt an der Seeblickstrasse in Meggen, mit Parkplatz hinter dem Haus und der Bushaltestelle Sonnenhof" focusable="false">
+              <rect width="800" height="480" fill="#EFE7D5"/>
+              <g stroke="#E4D9C1" stroke-width="1"><path d="M0 60h800M0 120h800M0 180h800M0 240h800M0 300h800M0 360h800M0 420h800M80 0v480M160 0v480M240 0v480M320 0v480M400 0v480M480 0v480M560 0v480M640 0v480M720 0v480"/></g>
+              <path d="M0 330 C120 300 210 356 320 344 C450 330 560 388 800 356 L800 480 L0 480 Z" fill="#2B4030" opacity=".82"/>
+              <g stroke="#A8BE8E" stroke-width="1.6" opacity=".55" fill="none"><path d="M40 392 C180 372 300 404 460 386 C580 372 700 396 780 384"/><path d="M60 428 C200 410 320 440 480 422 C600 408 700 430 770 420"/></g>
+              <text x="120" y="452" fill="#EFE7D5" font-family="Karla, sans-serif" font-size="19" letter-spacing="1.5">Vierwaldstättersee</text>
+              <g stroke="#D9CDB0" stroke-width="26" stroke-linecap="round" fill="none"><path d="M-20 230 C160 214 320 244 470 226 C600 210 720 232 820 220"/></g>
+              <g stroke="#F7F2E6" stroke-width="2" stroke-dasharray="14 14" fill="none"><path d="M-20 230 C160 214 320 244 470 226 C600 210 720 232 820 220"/></g>
+              <g stroke="#D9CDB0" stroke-width="16" stroke-linecap="round" fill="none"><path d="M250 -10 L262 232"/><path d="M600 220 L620 470"/></g>
+              <text x="46" y="212" fill="#4E4739" font-family="Karla, sans-serif" font-size="17" font-weight="700">Seeblickstrasse</text>
+              <text x="272" y="60" fill="#4E4739" font-family="Karla, sans-serif" font-size="15">Dorfstrasse</text>
+              <text x="632" y="418" fill="#4E4739" font-family="Karla, sans-serif" font-size="15">Uferweg</text>
+              <g><rect x="352" y="132" width="146" height="76" rx="8" fill="#3A2E24"/><path d="M352 132 L425 92 L498 132 Z" fill="#B25A20"/>
+                <text x="425" y="180" text-anchor="middle" fill="#F7F2E6" font-family="Lora, serif" font-size="22" font-weight="600">Sonnenhof</text></g>
+              <g><circle cx="425" cy="252" r="19" fill="#B25A20"/><path d="M425 292 L412 262 h26 Z" fill="#B25A20"/>
+                <circle cx="425" cy="252" r="7" fill="#F7F2E6"/></g>
+              <g><rect x="520" y="126" width="52" height="52" rx="10" fill="#4A5C3B"/>
+                <text x="546" y="163" text-anchor="middle" fill="#F7F2E6" font-family="Karla, sans-serif" font-size="30" font-weight="700">P</text>
+                <text x="546" y="200" text-anchor="middle" fill="#4E4739" font-family="Karla, sans-serif" font-size="14">Parkplätze</text></g>
+              <g><rect x="196" y="252" width="46" height="34" rx="7" fill="#24211B"/><rect x="204" y="260" width="30" height="12" rx="3" fill="#EFE7D5"/>
+                <circle cx="208" cy="290" r="5" fill="#24211B"/><circle cx="230" cy="290" r="5" fill="#24211B"/>
+                <text x="219" y="322" text-anchor="middle" fill="#4E4739" font-family="Karla, sans-serif" font-size="14">Bus 24</text></g>
+              <g fill="#4A5C3B" opacity=".7"><circle cx="690" cy="120" r="16"/><rect x="687" y="132" width="6" height="22" rx="3"/><circle cx="726" cy="150" r="12"/><rect x="723" y="158" width="5" height="18" rx="2"/><circle cx="96" cy="132" r="14"/><rect x="93" y="142" width="6" height="20" rx="3"/></g>
+              <g transform="translate(742,58)"><circle r="24" fill="none" stroke="#4E4739" stroke-width="1.5"/><path d="M0 -18 L7 4 L0 -1 L-7 4 Z" fill="#B25A20"/><text y="-28" text-anchor="middle" fill="#4E4739" font-family="Karla, sans-serif" font-size="13" font-weight="700">N</text></g>
+            </svg>
+          </div>
+
+          <ul class="arrival">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16v-3.2L6 7h12l2 5.8V16"/><path d="M3 16h18v3h-3v-3M6 19v-3"/><circle cx="7.5" cy="16.5" r="1.2"/><circle cx="16.5" cy="16.5" r="1.2"/></svg>
+              <span><b>Mit dem Auto</b>Ab Luzern in rund zehn Minuten Richtung Meggen. Gratis-Parkplätze direkt hinter dem Haus.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 9h14M8 21l1.5-4M16 21l-1.5-4"/><circle cx="8.5" cy="13.5" r="1.1"/><circle cx="15.5" cy="13.5" r="1.1"/></svg>
+              <span><b>Mit dem öffentlichen Verkehr</b>Bus 24 ab Luzern Bahnhof bis zur Haltestelle «Sonnenhof», von dort zwei Minuten zu Fuss.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+              <span><b>Zu Fuss dem See entlang</b>Der Uferweg führt direkt an unserer Terrasse vorbei, ideal für einen Spaziergang vor dem Essen.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" style="color:var(--cream)">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect width="64" height="64" rx="14" fill="#2B4030"/>
+            <circle cx="32" cy="25" r="9.5" fill="#E08A47"/>
+            <path d="M7 47 L23 31 L34 41 L45 32 L57 47 Z" fill="#A8BE8E"/>
+            <path d="M7 47 H57" stroke="#F7F2E6" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+          <span>
+            <span class="brand-name">Sonnenhof</span>
+            <span class="brand-sub">Gasthaus · Meggen</span>
+          </span>
+        </a>
+        <p>Regionale Küche am Vierwaldstättersee. Mittags schnell, abends in Ruhe, und im Saal auch für grössere Runden.</p>
+        <!-- Sprachumschalter: in dieser Demo bewusst ohne Funktion -->
+        <p class="lang-switch">
+          <span aria-current="true">DE</span><span aria-hidden="true">·</span><span class="off">FR</span>
+        </p>
+        <p class="lang-note">Mehrsprachigkeit ist möglich, in dieser Demo ohne Funktion.</p>
+      </div>
+
+      <div>
+        <h2>Seite</h2>
+        <ul class="footer-list">
+          <li><a href="#speisekarte">Speisekarte</a></li>
+          <li><a href="#mittagsmenue">Mittagsmenü</a></li>
+          <li><a href="#kueche">Unsere Küche</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#reservation">Tisch reservieren</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Kontakt</h2>
+        <ul class="footer-list">
+          <li>Seeblickstrasse 14<br>6045 Meggen</li>
+          <li><a href="tel:+410000000000">+41 00 000 00 00</a></li>
+          <li><a href="mailto:info@sonnenhof-meggen.ch">info@sonnenhof-meggen.ch</a></li>
+          <li>Sonntag Ruhetag</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-demo">Fiktives Unternehmen. Demoprojekt von Arvenna.</p>
+      <p>Gestaltung und Umsetzung: <a href="../../index.html">Arvenna · arvenna.ch</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var doc = document.documentElement;
+  doc.classList.add('js');
+
+  /* ---------- Arvenna-Ribbon: Höhe messen, damit der Header korrekt sitzt --- */
+  var ribbon = document.getElementById('arvRibbon');
+  function syncRibbonHeight() {
+    if (!ribbon || ribbon.dataset.dismissed === 'true') { return; }
+    document.body.style.setProperty('--ribbon-h', ribbon.offsetHeight + 'px');
+  }
+  syncRibbonHeight();
+  window.addEventListener('resize', syncRibbonHeight);
+  window.addEventListener('load', syncRibbonHeight);
+  if (ribbon) {
+    ribbon.querySelector('button').addEventListener('click', function () {
+      ribbon.dataset.dismissed = 'true';
+      document.body.style.setProperty('--ribbon-h', '0px');
+      document.body.classList.add('ribbon-hidden');
+    });
+  }
+
+  /* ---------- Mobile Navigation ------------------------------------------- */
+  var navToggle = document.getElementById('navToggle');
+  var navMobile = document.getElementById('navMobile');
+  function closeNav() {
+    if (!navToggle || !navMobile) { return; }
+    navToggle.setAttribute('aria-expanded', 'false');
+    navMobile.hidden = true;
+  }
+  if (navToggle && navMobile) {
+    navToggle.addEventListener('click', function () {
+      var open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      navMobile.hidden = open;
+    });
+    navMobile.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { closeNav(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { closeNav(); }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1080) { closeNav(); }
+    });
+  }
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Blur-up: Foto blendet über dem LQIP-Platzhalter auf --------- */
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.ph'));
+  frames.forEach(function (frame) {
+    var img = frame.querySelector('img');
+    function done() { frame.classList.add('is-loaded'); }
+    if (!img) { done(); return; }
+    if (img.complete && img.naturalWidth > 0) { done(); return; }
+    img.addEventListener('load', done);
+    img.addEventListener('error', done); // Platzhalter darf nie hängen bleiben
+  });
+  // Sicherheitsnetz gegen verpasste load-Events. Der Platzhalter bleibt so lange
+  // stehen, bis das Foto wirklich da ist, verschwindet aber nie dauerhaft nicht.
+  function sweep() {
+    frames.forEach(function (frame) {
+      var img = frame.querySelector('img');
+      if (!img || (img.complete && img.naturalWidth > 0)) { frame.classList.add('is-loaded'); }
+    });
+  }
+  window.addEventListener('load', sweep);
+  setTimeout(function () {
+    frames.forEach(function (frame) { frame.classList.add('is-loaded'); });
+  }, 8000);
+
+  /* ---------- Parallaxe: nur transform, nie top ---------------------------- */
+  var parallaxItems = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  if (parallaxItems.length && !reduced) {
+    var ticking = false;
+    var updateParallax = function () {
+      ticking = false;
+      var vh = window.innerHeight;
+      parallaxItems.forEach(function (el) {
+        var host = el.parentElement;
+        var box = host.getBoundingClientRect();
+        if (box.bottom < -200 || box.top > vh + 200) { return; }
+        var speed = parseFloat(el.getAttribute('data-parallax')) || 0.12;
+        el.style.transform = 'translate3d(0,' + Math.round(-box.top * speed) + 'px,0)';
+      });
+    };
+    var onScroll = function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(updateParallax); }
+    };
+    updateParallax();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  /* ---------- Speisekarte: Tabs mit Überblendung -------------------------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  var panelStage = document.getElementById('menuPanels');
+  var switchTimers = [];
+  function clearTimers() {
+    switchTimers.forEach(clearTimeout);
+    switchTimers = [];
+  }
+  function showPanel(panel) {
+    panel.hidden = false;
+    if (reduced) { return; }
+    panel.classList.add('is-entering');
+    switchTimers.push(setTimeout(function () {
+      panel.classList.remove('is-entering');
+      if (panelStage) { panelStage.style.minHeight = ''; }
+    }, 480));
+  }
+  function selectTab(tab, setFocus) {
+    var target = document.getElementById(tab.getAttribute('aria-controls'));
+    var current = null;
+    tabs.forEach(function (t) {
+      var selected = t === tab;
+      t.setAttribute('aria-selected', String(selected));
+      t.tabIndex = selected ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel && !panel.hidden) { current = panel; }
+    });
+    if (setFocus) { tab.focus(); }
+    if (!target) { return; }
+    if (current === target) { return; }
+    clearTimers();
+
+    if (reduced || !current) {
+      tabs.forEach(function (t) {
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel && panel !== target) { panel.hidden = true; panel.classList.remove('is-leaving', 'is-entering'); }
+      });
+      showPanel(target);
+      return;
+    }
+
+    // Höhe kurz festhalten, damit die Seite beim Wechsel nicht springt
+    if (panelStage) { panelStage.style.minHeight = panelStage.offsetHeight + 'px'; }
+    current.classList.add('is-leaving');
+    switchTimers.push(setTimeout(function () {
+      tabs.forEach(function (t) {
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel && panel !== target) { panel.hidden = true; panel.classList.remove('is-leaving', 'is-entering'); }
+      });
+      showPanel(target);
+    }, 200));
+  }
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener('click', function () { selectTab(tab, false); });
+    tab.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight') { next = tabs[(index + 1) % tabs.length]; }
+      if (e.key === 'ArrowLeft') { next = tabs[(index - 1 + tabs.length) % tabs.length]; }
+      if (e.key === 'Home') { next = tabs[0]; }
+      if (e.key === 'End') { next = tabs[tabs.length - 1]; }
+      if (next) { e.preventDefault(); selectTab(next, true); }
+    });
+  });
+
+  /* ---------- Scroll-Reveal (inkl. gestaffelter Gruppen) ------------------- */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal, .stagger'));
+  if (reduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Reservationsformular ---------------------------------------- */
+  var form = document.getElementById('reserveForm');
+  if (!form) { return; }
+  var status = document.getElementById('formStatus');
+  var dateInput = document.getElementById('r-datum');
+  var dateError = document.getElementById('err-datum');
+
+  // Vergangene Daten gar nicht erst anbieten
+  if (dateInput) {
+    var now = new Date();
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    dateInput.min = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+  }
+
+  function setError(field, message) {
+    var wrapper = field.closest('.field');
+    wrapper.classList.add('has-error');
+    field.setAttribute('aria-invalid', 'true');
+    if (message) {
+      var msg = wrapper.querySelector('.error-msg');
+      if (msg) { msg.textContent = message; }
+    }
+  }
+  function clearError(field) {
+    field.closest('.field').classList.remove('has-error');
+    field.removeAttribute('aria-invalid');
+  }
+
+  function validateField(field) {
+    var value = (field.value || '').trim();
+    clearError(field);
+
+    if (field.hasAttribute('required') && value === '') {
+      setError(field);
+      return false;
+    }
+    if (field === dateInput && value !== '') {
+      var chosen = new Date(value + 'T00:00:00');
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (isNaN(chosen.getTime()) || chosen < today) {
+        if (dateError) { dateError.textContent = 'Bitte wählen Sie ein Datum ab heute.'; }
+        setError(field);
+        return false;
+      }
+      if (chosen.getDay() === 0) {
+        setError(field, 'Am Sonntag ist Ruhetag. Bitte wählen Sie einen anderen Tag.');
+        return false;
+      }
+    }
+    if (field.type === 'email' && value !== '' && !/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(value)) {
+      setError(field);
+      return false;
+    }
+    if (field.type === 'tel' && value !== '' && (value.replace(/\D/g, '').length < 9)) {
+      setError(field);
+      return false;
+    }
+    if (field.id === 'r-name' && value !== '' && value.length < 2) {
+      setError(field);
+      return false;
+    }
+    return true;
+  }
+
+  var fields = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required], input[type="email"], input[type="tel"]'));
+  fields.forEach(function (field) {
+    field.addEventListener('blur', function () { validateField(field); });
+    field.addEventListener('change', function () {
+      if (field.closest('.field').classList.contains('has-error')) { validateField(field); }
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Demo: es wird nichts versendet
+    if (form.querySelector('#r-website').value !== '') { return; } // Spam-Falle
+
+    var firstInvalid = null;
+    fields.forEach(function (field) {
+      if (!validateField(field) && !firstInvalid) { firstInvalid = field; }
+    });
+
+    if (firstInvalid) {
+      status.classList.remove('is-visible');
+      firstInvalid.focus();
+      return;
+    }
+
+    form.hidden = true;
+    status.classList.add('is-visible');
+    status.setAttribute('tabindex', '-1');
+    status.focus();
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

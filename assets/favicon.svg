@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Arvenna">
+  <rect width="32" height="32" rx="6" fill="#B3122F"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="2.31" stroke-linecap="butt" stroke-linejoin="miter">
+    <path d="M11.38 11.88 L16 6 L20.62 11.88"/>
+    <path d="M8.65 19.44 L16 13.56 L23.35 19.44"/>
+    <path d="M5.92 27 L16 21.12 L26.08 27"/>
+  </g>
+</svg>

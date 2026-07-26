@@ -1,0 +1,4 @@
+# Preview deployment only. This site is not launched yet.
+# Do NOT copy this file to arvenna.ch, it would block the real site from Google.
+User-agent: *
+Disallow: /
